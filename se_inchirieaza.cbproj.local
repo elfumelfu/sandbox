@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2010/03/12 20:21:40.046.cpp,C:\se-inchirieaza.ro\Unit1.cpp=C:\se-inchirieaza.ro\apartamente.cpp</Transaction>
+    <Transaction>2010/03/12 20:21:40.046.h,C:\se-inchirieaza.ro\Unit1.h=C:\se-inchirieaza.ro\apartamente.h</Transaction>
+    <Transaction>2010/03/12 20:21:40.046.dfm,C:\se-inchirieaza.ro\Unit1.dfm=C:\se-inchirieaza.ro\apartamente.dfm</Transaction>
+  </Transactions>
+</BorlandProject>

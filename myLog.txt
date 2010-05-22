@@ -1,0 +1,1 @@
+UPDATE apartamente SET  		nrcam = 1,zona = '2',bloc = '3',ap = '4',etaj = '5',pret = 6,moneda = '7',grupsanitar = 8,dsc = '9',data_modificarii = '10.05.17',data_expirarii = '20.04.21',altele = '',balcon = 0,gresie = 0,faianta = 0,termopan = 0,parchet = 0,um = 0,ct = 0,ac = 0,apometre = 0,repartitoare = 0,mobilat = 'Nemobilat',nume = '',telefon = '',info_prop = '' WHERE id = 15
