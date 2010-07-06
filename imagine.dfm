@@ -1,0 +1,30 @@
+object frmImagine: TfrmImagine
+  Left = 0
+  Top = 0
+  Caption = 'Imagine'
+  ClientHeight = 249
+  ClientWidth = 480
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object img: TImage
+    Left = 0
+    Top = 0
+    Width = 480
+    Height = 249
+    Align = alClient
+    Center = True
+    Proportional = True
+    Stretch = True
+    ExplicitLeft = 192
+    ExplicitTop = 88
+    ExplicitWidth = 105
+    ExplicitHeight = 105
+  end
+end
