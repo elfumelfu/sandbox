@@ -1,9 +1,9 @@
-//$$---- Form HDR ----
-//---------------------------------------------------------------------------
+// $$---- Form HDR ----
+// ---------------------------------------------------------------------------
 
 #ifndef mainH
 #define mainH
-//---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
 #include <Classes.hpp>
 #include <Controls.hpp>
 #include <StdCtrls.hpp>
@@ -22,29 +22,34 @@
 #include <DBXMySql.hpp>
 #include <SqlExpr.hpp>
 #include <WideStrings.hpp>
+#include "JvExExtCtrls.hpp"
+#include "JvNetscapeSplitter.hpp"
+#include "JvCaptionPanel.hpp"
+#include "JvExtComponent.hpp"
 
 #define SETARI_INI_FILE ExtractFilePath(Application->ExeName)+"setari.ini"
 
-//---------------------------------------------------------------------------
-class TSetari
-{
+// ---------------------------------------------------------------------------
+class TSetari {
 public:
-	float 		  curs_eur;
-	float 		  curs_usd;
-	int   		  marja_cautare;
+	float curs_eur;
+	float curs_usd;
+	int marja_cautare;
 	UnicodeString moneda_marja_cautare;
 	UnicodeString judet;
 	UnicodeString localitate;
-	//Metode
-	TSetari(){};
+
+	// Metode
+	TSetari() {
+	};
 	TSetari(UnicodeString iniFile);
 	void LoadFromFile(UnicodeString iniFile);
 	void SaveToFile(UnicodeString iniFile);
-} ;
-//---------------------------------------------------------------------------
-class TfrmMain : public TForm
-{
-__published:	// IDE-managed Components
+};
+
+// ---------------------------------------------------------------------------
+class TfrmMain : public TForm {
+__published: // IDE-managed Components
 	TMainMenu *MainMenu1;
 	TMenuItem *File1;
 	TMenuItem *Iesier1;
@@ -126,6 +131,16 @@ __published:	// IDE-managed Components
 	TMenuItem *Setari1;
 	TCheckBox *ckbMarja;
 	TCheckBox *ckbClApMarja;
+	TJvNetscapeSplitter *JvNetscapeSplitter1;
+	TPanel *panAlerta;
+	TJvCaptionPanel *JvCaptionPanel1;
+	TListBox *ListBox1;
+	TDBGrid *DBGridClienti;
+	TJvNetscapeSplitter *JvNetscapeSplitter2;
+	TDataSource *DataSource2;
+	TQuery *queryClienti;
+	TListBox *ListBox2;
+
 	void __fastcall DatabaseAfterConnect(TObject *Sender);
 	void __fastcall Iesier1Click(TObject *Sender);
 	void __fastcall TreeView1Change(TObject *Sender, TTreeNode *Node);
@@ -134,14 +149,14 @@ __published:	// IDE-managed Components
 	void __fastcall Query1AfterOpen(TDataSet *DataSet);
 	void __fastcall Agentii1Click(TObject *Sender);
 	void __fastcall cbNrCamChange(TObject *Sender);
-	void __fastcall DBGrid1DrawColumnCell(TObject *Sender, const TRect &Rect, int DataCol,
-          TColumn *Column, TGridDrawState State);
+	void __fastcall DBGrid1DrawColumnCell(TObject *Sender, const TRect &Rect,
+		int DataCol, TColumn *Column, TGridDrawState State);
 	void __fastcall Cauta1Click(TObject *Sender);
 	void __fastcall btnCautaClick(TObject *Sender);
 	void __fastcall ListView1DblClick(TObject *Sender);
 	void __fastcall TreeView1Click(TObject *Sender);
-	void __fastcall DBGrid1MouseUp(TObject *Sender, TMouseButton Button, TShiftState Shift,
-          int X, int Y);
+	void __fastcall DBGrid1MouseUp(TObject *Sender, TMouseButton Button,
+		TShiftState Shift, int X, int Y);
 	void __fastcall Detalii1Click(TObject *Sender);
 	void __fastcall Sterge1Click(TObject *Sender);
 	void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
@@ -154,25 +169,42 @@ __published:	// IDE-managed Components
 	void __fastcall Apartamente2Click(TObject *Sender);
 	void __fastcall Label19Click(TObject *Sender);
 	void __fastcall Setari1Click(TObject *Sender);
-	void __fastcall ListBox1DragOver(TObject *Sender, TObject *Source, int X, int Y,
-          TDragState State, bool &Accept);
-	void __fastcall ListBox1DragDrop(TObject *Sender, TObject *Source, int X, int Y);
-          
-private:	// User declarations
-public:		// User declarations
+	void __fastcall ListBox1DragOver(TObject *Sender, TObject *Source, int X,
+		int Y, TDragState State, bool &Accept);
+	void __fastcall ListBox1DragDrop(TObject *Sender, TObject *Source, int X,
+		int Y);
+	void __fastcall JvCaptionPanel1ButtonClick
+		(TObject *Sender, TJvCapBtnStyle Button);
+	void __fastcall DBGrid1MouseMove(TObject *Sender, TShiftState Shift, int X,
+		int Y);
+	void __fastcall DBGrid1CellClick(TColumn *Column);
+	void __fastcall DBGridClientiMouseUp(TObject *Sender, TMouseButton Button,
+		TShiftState Shift, int X, int Y);
+	void __fastcall DBGridClientiMouseMove
+		(TObject *Sender, TShiftState Shift, int X, int Y);
+	void __fastcall ListBox2DragOver(TObject *Sender, TObject *Source, int X,
+		int Y, TDragState State, bool &Accept);
+	void __fastcall ListBox2DragDrop(TObject *Sender, TObject *Source, int X,
+		int Y);
+
+private: // User declarations
+public: // User declarations
 	__fastcall TfrmMain(TComponent* Owner);
+
 	UnicodeString tabela;
 	UnicodeString defaultJudet;
 	UnicodeString defaultLocalitate;
-	int 		  update;
-	TSetari       setari;
-	void __fastcall ComboList (TComboBox *combo,const char *field, const char *table,
-			bool addAll, const char * where );
-	void __fastcall SelectList (TListBox *list,const char *field, const char *table,
-			bool addAll, const char * where );
-	void __fastcall Cauta (char *text, const char *field, const char *table);
+	int update;
+	TSetari setari;
+
+	void __fastcall ComboList(TComboBox *combo, char *field, UnicodeString table,
+		bool addAll, const char * where);
+	void __fastcall SelectList(TListBox *list, char *field, char *table,
+		bool addAll, const char * where);
+	void __fastcall Cauta(char *text, char *field, char *table);
 };
-//---------------------------------------------------------------------------
+
+// ---------------------------------------------------------------------------
 extern PACKAGE TfrmMain *frmMain;
-//---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
 #endif

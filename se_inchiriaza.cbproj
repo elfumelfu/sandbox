@@ -38,7 +38,7 @@
 			<OutputExt>exe</OutputExt>
 			<BCC_GenerateMultithreaded>true</BCC_GenerateMultithreaded>
 			<ILINK_ObjectSearchPath>D:\Proiecte\se_inchiriaza;$(ILINK_ObjectSearchPath)</ILINK_ObjectSearchPath>
-			<AllPackageLibs>rtl.lib;vcl.lib;dbrtl.lib;bdertl.lib;vcldb.lib;vclx.lib;vcltouch.lib;xmlrtl.lib;vclimg.lib;dbexpress.lib;DbxClientDriver.lib;dsnap.lib;DbxCommonDriver.lib;DBXMySQLDriver.lib;Package1.lib</AllPackageLibs>
+			<AllPackageLibs>rtl.lib;vcl.lib;dbrtl.lib;bdertl.lib;vcldb.lib;vclx.lib;vcltouch.lib;xmlrtl.lib;vclimg.lib;dbexpress.lib;DbxClientDriver.lib;dsnap.lib;DbxCommonDriver.lib;DBXMySQLDriver.lib;Package1.lib;JvCoreD14R.lib;JclVcl.lib;Jcl.lib;JvCtrlsD14R.lib;JvSystemD14R.lib;JvStdCtrlsD14R.lib</AllPackageLibs>
 			<DynamicRTL>true</DynamicRTL>
 			<BCC_Defines>NO_STRICT;$(BCC_Defines)</BCC_Defines>
 			<DCC_CBuilderOutput>JPHNE</DCC_CBuilderOutput>
@@ -117,6 +117,10 @@
 				<Form>frmSetari</Form>
 				<DependentOn>setari.h</DependentOn>
 				<BuildOrder>8</BuildOrder>
+			</CppCompile>
+			<CppCompile Include="tools.cpp">
+				<DependentOn>tools.h</DependentOn>
+				<BuildOrder>9</BuildOrder>
 			</CppCompile>
 			<FormResources Include="apartamente.dfm"/>
 			<FormResources Include="login.dfm"/>

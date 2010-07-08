@@ -3,7 +3,7 @@ object frmMain: TfrmMain
   Top = 0
   Caption = 'se-inchiriaza.ro'
   ClientHeight = 508
-  ClientWidth = 942
+  ClientWidth = 989
   Color = clBtnFace
   DefaultMonitor = dmMainForm
   Font.Charset = DEFAULT_CHARSET
@@ -304,19 +304,30 @@ object frmMain: TfrmMain
     ExplicitLeft = 182
     ExplicitTop = 29
   end
+  object JvNetscapeSplitter1: TJvNetscapeSplitter
+    Left = 794
+    Top = 35
+    Height = 454
+    Align = alRight
+    MinSize = 1
+    Maximized = False
+    Minimized = False
+    AllowDrag = False
+    ButtonCursor = crDefault
+    ExplicitTop = 29
+  end
   object StatusBar: TStatusBar
     Left = 0
     Top = 489
-    Width = 942
+    Width = 989
     Height = 19
     Panels = <>
     SimplePanel = True
-    ExplicitWidth = 943
   end
   object panCauta: TPanel
     Left = 188
     Top = 35
-    Width = 754
+    Width = 606
     Height = 454
     Align = alClient
     Alignment = taLeftJustify
@@ -324,14 +335,13 @@ object frmMain: TfrmMain
     TabOrder = 2
     VerticalAlignment = taAlignTop
     Visible = False
-    ExplicitWidth = 755
     DesignSize = (
-      754
+      606
       454)
     object ListView1: TListView
       Left = 1
       Top = 51
-      Width = 752
+      Width = 604
       Height = 402
       Align = alBottom
       Anchors = [akLeft, akTop, akRight, akBottom]
@@ -358,19 +368,17 @@ object frmMain: TfrmMain
       TabOrder = 0
       ViewStyle = vsReport
       OnDblClick = ListView1DblClick
-      ExplicitWidth = 753
     end
     object txtCauta: TEdit
       Left = 3
       Top = 22
-      Width = 662
+      Width = 514
       Height = 21
       Anchors = [akLeft, akTop, akRight]
       TabOrder = 1
-      ExplicitWidth = 663
     end
     object btnCauta: TButton
-      Left = 671
+      Left = 523
       Top = 20
       Width = 75
       Height = 25
@@ -379,24 +387,37 @@ object frmMain: TfrmMain
       Default = True
       TabOrder = 2
       OnClick = btnCautaClick
-      ExplicitLeft = 672
     end
   end
   object panMain: TPanel
     Left = 188
     Top = 35
-    Width = 754
+    Width = 606
     Height = 454
     Align = alClient
     Alignment = taLeftJustify
     Caption = 'panMain'
     TabOrder = 1
-    ExplicitWidth = 755
+    object JvNetscapeSplitter2: TJvNetscapeSplitter
+      Left = 1
+      Top = 258
+      Width = 604
+      Height = 10
+      Cursor = crVSplit
+      Align = alBottom
+      MinSize = 1
+      Maximized = False
+      Minimized = False
+      ButtonCursor = crDefault
+      ExplicitLeft = 779
+      ExplicitTop = 57
+      ExplicitWidth = 276
+    end
     object DBGrid1: TDBGrid
       Left = 1
       Top = 57
-      Width = 752
-      Height = 396
+      Width = 604
+      Height = 201
       Align = alClient
       DataSource = DataSource1
       DrawingStyle = gdsGradient
@@ -407,8 +428,10 @@ object frmMain: TfrmMain
       TitleFont.Height = -11
       TitleFont.Name = 'Tahoma'
       TitleFont.Style = []
+      OnCellClick = DBGrid1CellClick
       OnDrawColumnCell = DBGrid1DrawColumnCell
       OnDblClick = DBGrid1DblClick
+      OnMouseMove = DBGrid1MouseMove
       OnMouseUp = DBGrid1MouseUp
       OnTitleClick = DBGrid1TitleClick
       Columns = <
@@ -597,26 +620,24 @@ object frmMain: TfrmMain
     object panCombo: TPanel
       Left = 1
       Top = 1
-      Width = 752
+      Width = 604
       Height = 56
       Align = alTop
       BevelOuter = bvNone
       ShowCaption = False
       TabOrder = 1
-      ExplicitWidth = 753
       object panApartamente: TPanel
         Left = 0
         Top = 0
-        Width = 752
+        Width = 604
         Height = 56
         Align = alClient
         BevelOuter = bvNone
         FullRepaint = False
         ShowCaption = False
         TabOrder = 0
-        ExplicitWidth = 753
         DesignSize = (
-          752
+          604
           56)
         object Label1: TLabel
           Left = 5
@@ -675,7 +696,7 @@ object frmMain: TfrmMain
           Caption = 'Utilat'
         end
         object lblAdaugaAp: TLabel
-          Left = 652
+          Left = 504
           Top = 40
           Width = 96
           Height = 13
@@ -783,16 +804,15 @@ object frmMain: TfrmMain
       object panClientiApartamente: TPanel
         Left = 0
         Top = 0
-        Width = 752
+        Width = 604
         Height = 56
         Align = alClient
         BevelOuter = bvNone
         FullRepaint = False
         ShowCaption = False
         TabOrder = 1
-        ExplicitWidth = 753
         DesignSize = (
-          752
+          604
           56)
         object Label9: TLabel
           Left = 5
@@ -865,7 +885,7 @@ object frmMain: TfrmMain
           Caption = 'Perioada'
         end
         object Label19: TLabel
-          Left = 682
+          Left = 534
           Top = 40
           Width = 65
           Height = 13
@@ -1018,15 +1038,32 @@ object frmMain: TfrmMain
         end
       end
     end
+    object DBGridClienti: TDBGrid
+      Left = 1
+      Top = 268
+      Width = 604
+      Height = 185
+      Align = alBottom
+      DataSource = DataSource2
+      DrawingStyle = gdsGradient
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+      TabOrder = 2
+      TitleFont.Charset = DEFAULT_CHARSET
+      TitleFont.Color = clWindowText
+      TitleFont.Height = -11
+      TitleFont.Name = 'Tahoma'
+      TitleFont.Style = []
+      OnMouseMove = DBGridClientiMouseMove
+      OnMouseUp = DBGridClientiMouseUp
+    end
   end
   object panToolbar: TPanel
     Left = 0
     Top = 0
-    Width = 942
+    Width = 989
     Height = 35
     Align = alTop
     TabOrder = 3
-    ExplicitWidth = 943
     object imgCauta: TImage
       Left = 4
       Top = 4
@@ -1950,6 +1987,54 @@ object frmMain: TfrmMain
         006900}
     end
   end
+  object panAlerta: TPanel
+    Left = 804
+    Top = 35
+    Width = 185
+    Height = 454
+    Align = alRight
+    BevelOuter = bvNone
+    TabOrder = 5
+    object JvCaptionPanel1: TJvCaptionPanel
+      Left = 0
+      Top = 0
+      Width = 185
+      Height = 454
+      Align = alClient
+      Buttons = [capClose]
+      BorderStyle = bsNone
+      Caption = 'Alerte'
+      CaptionPosition = dpTop
+      CaptionFont.Charset = DEFAULT_CHARSET
+      CaptionFont.Color = clWhite
+      CaptionFont.Height = -13
+      CaptionFont.Name = 'Tahoma'
+      CaptionFont.Style = [fsBold]
+      OutlookLook = False
+      TabOrder = 0
+      OnButtonClick = JvCaptionPanel1ButtonClick
+      object ListBox1: TListBox
+        Left = 6
+        Top = 136
+        Width = 171
+        Height = 97
+        ItemHeight = 13
+        TabOrder = 0
+        OnDragDrop = ListBox1DragDrop
+        OnDragOver = ListBox1DragOver
+      end
+      object ListBox2: TListBox
+        Left = 6
+        Top = 258
+        Width = 171
+        Height = 97
+        ItemHeight = 13
+        TabOrder = 1
+        OnDragDrop = ListBox2DragDrop
+        OnDragOver = ListBox2DragOver
+      end
+    end
+  end
   object MainMenu1: TMainMenu
     Left = 80
     Top = 144
@@ -2026,8 +2111,8 @@ object frmMain: TfrmMain
   object sqlSelect: TQuery
     DatabaseName = 'baza_data'
     DataSource = DataSource1
-    Left = 80
-    Top = 256
+    Left = 136
+    Top = 200
   end
   object cbQuery: TQuery
     DatabaseName = 'baza_data'
@@ -2048,6 +2133,15 @@ object frmMain: TfrmMain
   end
   object sqlDelete: TUpdateSQL
     Left = 128
+    Top = 256
+  end
+  object DataSource2: TDataSource
+    DataSet = queryClienti
+    Left = 80
+    Top = 256
+  end
+  object queryClienti: TQuery
+    Left = 24
     Top = 256
   end
 end
