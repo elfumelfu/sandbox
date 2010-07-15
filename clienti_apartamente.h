@@ -11,6 +11,7 @@
 #include <ExtCtrls.hpp>
 #include <DBTables.hpp>
 #include <DB.hpp>
+#include "ButtonWithColor.hpp"
 //---------------------------------------------------------------------------
 class TfrmClientiAp : public TForm
 {
@@ -49,12 +50,12 @@ __published:	// IDE-managed Components
 	TGroupBox *GroupBox5;
 	TCheckListBox *cblUtilat;
 	TButton *btnStergeTot;
-	TButton *btnInchiriat;
 	TButton *btnSalveaza;
 	TButton *btnRenunta;
 	TUpdateSQL *insertQuery;
 	TUpdateSQL *SQL;
 	TQuery *getLocId;
+	TBitBtnWithColor *btnInchiriat;
 	void __fastcall btnStergeTotClick(TObject *Sender);
 	void __fastcall FormShow(TObject *Sender);
 	void __fastcall txtJudetChange(TObject *Sender);

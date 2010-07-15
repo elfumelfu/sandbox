@@ -7810,7 +7810,7 @@ object frmAp: TfrmAp
       'Neutilat')
     TabOrder = 8
   end
-  object btnInchiriat: TButton
+  object btnInchiriat: TBitBtnWithColor
     Left = 475
     Top = 377
     Width = 75
@@ -7818,6 +7818,7 @@ object frmAp: TfrmAp
     Caption = 'Inchiriat'
     TabOrder = 9
     OnClick = btnInchiriatClick
+    Color = clBtnFace
   end
   object SQL: TUpdateSQL
     Left = 272

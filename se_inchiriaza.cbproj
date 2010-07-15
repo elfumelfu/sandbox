@@ -20,7 +20,7 @@
 			<Base>true</Base>
 		</PropertyGroup>
 		<PropertyGroup Condition="'$(Base)'!=''">
-			<LinkPackageStatics>vcltouch.lib;vclimg.lib;DbxClientDriver.lib;DbxCommonDriver.lib;DBXMySQLDriver.lib</LinkPackageStatics>
+			<LinkPackageStatics>vcltouch.lib;vclimg.lib;DbxClientDriver.lib;DbxCommonDriver.lib;DBXMySQLDriver.lib;Package1.lib;JvCoreD14R.lib;JclVcl.lib;Jcl.lib;JvCtrlsD14R.lib;JvSystemD14R.lib;JvStdCtrlsD14R.lib;btnWithColor.lib</LinkPackageStatics>
 			<LinkPackageImports>rtl.bpi;vcl.bpi;dbrtl.bpi;bdertl.bpi;vcldb.bpi;vclx.bpi;xmlrtl.bpi;dbexpress.bpi;dsnap.bpi</LinkPackageImports>
 			<BRCC_Defines>_RTLDLL;USEPACKAGES;NO_STRICT;$(BRCC_Defines)</BRCC_Defines>
 			<PackageImports>vcl.bpi;vclx.bpi;dbrtl.bpi;Rave65VCL.bpi;bdertl.bpi;rtl.bpi;vcldb.bpi;adortl.bpi;dbxcds.bpi;dbexpress.bpi;vclib.bpi;ibxpress.bpi;xmlrtl.bpi;vclactnband.bpi;inet.bpi;IntrawebDB_90_100.bpi;Intraweb_90_100.bpi;vclie.bpi;inetdbbde.bpi;inetdbxpress.bpi;IndyCore.bpi;IndySystem.bpi;bcbofficexp.bpi;bcbsmp.bpi;soaprtl.bpi;dsnap.bpi;IndyProtocols.bpi;bcbie.bpi;teeui.bpi;teedb.bpi;tee.bpi;vcldbx.bpi;dsnapcon.bpi;websnap.bpi;webdsnap.bpi</PackageImports>
@@ -38,7 +38,7 @@
 			<OutputExt>exe</OutputExt>
 			<BCC_GenerateMultithreaded>true</BCC_GenerateMultithreaded>
 			<ILINK_ObjectSearchPath>D:\Proiecte\se_inchiriaza;$(ILINK_ObjectSearchPath)</ILINK_ObjectSearchPath>
-			<AllPackageLibs>rtl.lib;vcl.lib;dbrtl.lib;bdertl.lib;vcldb.lib;vclx.lib;vcltouch.lib;xmlrtl.lib;vclimg.lib;dbexpress.lib;DbxClientDriver.lib;dsnap.lib;DbxCommonDriver.lib;DBXMySQLDriver.lib;Package1.lib;JvCoreD14R.lib;JclVcl.lib;Jcl.lib;JvCtrlsD14R.lib;JvSystemD14R.lib;JvStdCtrlsD14R.lib</AllPackageLibs>
+			<AllPackageLibs>rtl.lib;vcl.lib;dbrtl.lib;bdertl.lib;vcldb.lib;vclx.lib;vcltouch.lib;xmlrtl.lib;vclimg.lib;dbexpress.lib;DbxClientDriver.lib;dsnap.lib;DbxCommonDriver.lib;DBXMySQLDriver.lib;Package1.lib;JvCoreD14R.lib;JclVcl.lib;Jcl.lib;JvCtrlsD14R.lib;JvSystemD14R.lib;JvStdCtrlsD14R.lib;btnWithColor.lib;Colortreeview.lib</AllPackageLibs>
 			<DynamicRTL>true</DynamicRTL>
 			<BCC_Defines>NO_STRICT;$(BCC_Defines)</BCC_Defines>
 			<DCC_CBuilderOutput>JPHNE</DCC_CBuilderOutput>

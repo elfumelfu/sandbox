@@ -2,7 +2,7 @@ object frmMain: TfrmMain
   Left = 0
   Top = 0
   Caption = 'se-inchiriaza.ro'
-  ClientHeight = 508
+  ClientHeight = 528
   ClientWidth = 989
   Color = clBtnFace
   DefaultMonitor = dmMainForm
@@ -298,37 +298,48 @@ object frmMain: TfrmMain
   PixelsPerInch = 96
   TextHeight = 13
   object Splitter1: TSplitter
-    Left = 185
+    Left = 134
     Top = 35
-    Height = 454
+    Height = 474
+    Visible = False
     ExplicitLeft = 182
     ExplicitTop = 29
+    ExplicitHeight = 454
   end
   object JvNetscapeSplitter1: TJvNetscapeSplitter
     Left = 794
     Top = 35
-    Height = 454
+    Height = 474
     Align = alRight
     MinSize = 1
     Maximized = False
     Minimized = False
     AllowDrag = False
     ButtonCursor = crDefault
+    OnRestore = btnAlertaStergeTotClick
     ExplicitTop = 29
+    ExplicitHeight = 454
   end
   object StatusBar: TStatusBar
     Left = 0
-    Top = 489
+    Top = 509
     Width = 989
     Height = 19
-    Panels = <>
-    SimplePanel = True
+    Panels = <
+      item
+        Style = psOwnerDraw
+        Width = 134
+      end
+      item
+        Width = 50
+      end>
+    OnDrawPanel = StatusBarDrawPanel
   end
   object panCauta: TPanel
-    Left = 188
+    Left = 137
     Top = 35
-    Width = 606
-    Height = 454
+    Width = 657
+    Height = 474
     Align = alClient
     Alignment = taLeftJustify
     Caption = 'Introduceti textul dorit'
@@ -336,13 +347,13 @@ object frmMain: TfrmMain
     VerticalAlignment = taAlignTop
     Visible = False
     DesignSize = (
-      606
-      454)
+      657
+      474)
     object ListView1: TListView
       Left = 1
       Top = 51
-      Width = 604
-      Height = 402
+      Width = 655
+      Height = 422
       Align = alBottom
       Anchors = [akLeft, akTop, akRight, akBottom]
       Columns = <
@@ -367,18 +378,19 @@ object frmMain: TfrmMain
       RowSelect = True
       TabOrder = 0
       ViewStyle = vsReport
+      OnCustomDrawItem = ListView1CustomDrawItem
       OnDblClick = ListView1DblClick
     end
     object txtCauta: TEdit
       Left = 3
       Top = 22
-      Width = 514
+      Width = 565
       Height = 21
       Anchors = [akLeft, akTop, akRight]
       TabOrder = 1
     end
     object btnCauta: TButton
-      Left = 523
+      Left = 574
       Top = 20
       Width = 75
       Height = 25
@@ -390,18 +402,18 @@ object frmMain: TfrmMain
     end
   end
   object panMain: TPanel
-    Left = 188
+    Left = 137
     Top = 35
-    Width = 606
-    Height = 454
+    Width = 657
+    Height = 474
     Align = alClient
     Alignment = taLeftJustify
     Caption = 'panMain'
     TabOrder = 1
     object JvNetscapeSplitter2: TJvNetscapeSplitter
       Left = 1
-      Top = 258
-      Width = 604
+      Top = 278
+      Width = 655
       Height = 10
       Cursor = crVSplit
       Align = alBottom
@@ -416,8 +428,8 @@ object frmMain: TfrmMain
     object DBGrid1: TDBGrid
       Left = 1
       Top = 57
-      Width = 604
-      Height = 201
+      Width = 655
+      Height = 221
       Align = alClient
       DataSource = DataSource1
       DrawingStyle = gdsGradient
@@ -620,7 +632,7 @@ object frmMain: TfrmMain
     object panCombo: TPanel
       Left = 1
       Top = 1
-      Width = 604
+      Width = 655
       Height = 56
       Align = alTop
       BevelOuter = bvNone
@@ -629,7 +641,7 @@ object frmMain: TfrmMain
       object panApartamente: TPanel
         Left = 0
         Top = 0
-        Width = 604
+        Width = 655
         Height = 56
         Align = alClient
         BevelOuter = bvNone
@@ -637,7 +649,7 @@ object frmMain: TfrmMain
         ShowCaption = False
         TabOrder = 0
         DesignSize = (
-          604
+          655
           56)
         object Label1: TLabel
           Left = 5
@@ -696,7 +708,7 @@ object frmMain: TfrmMain
           Caption = 'Utilat'
         end
         object lblAdaugaAp: TLabel
-          Left = 504
+          Left = 555
           Top = 40
           Width = 96
           Height = 13
@@ -804,7 +816,7 @@ object frmMain: TfrmMain
       object panClientiApartamente: TPanel
         Left = 0
         Top = 0
-        Width = 604
+        Width = 655
         Height = 56
         Align = alClient
         BevelOuter = bvNone
@@ -812,7 +824,7 @@ object frmMain: TfrmMain
         ShowCaption = False
         TabOrder = 1
         DesignSize = (
-          604
+          655
           56)
         object Label9: TLabel
           Left = 5
@@ -885,7 +897,7 @@ object frmMain: TfrmMain
           Caption = 'Perioada'
         end
         object Label19: TLabel
-          Left = 534
+          Left = 585
           Top = 40
           Width = 65
           Height = 13
@@ -1040,8 +1052,8 @@ object frmMain: TfrmMain
     end
     object DBGridClienti: TDBGrid
       Left = 1
-      Top = 268
-      Width = 604
+      Top = 288
+      Width = 655
       Height = 185
       Align = alBottom
       DataSource = DataSource2
@@ -1053,6 +1065,8 @@ object frmMain: TfrmMain
       TitleFont.Height = -11
       TitleFont.Name = 'Tahoma'
       TitleFont.Style = []
+      OnDrawColumnCell = DBGridClientiDrawColumnCell
+      OnDblClick = DBGridClientiDblClick
       OnMouseMove = DBGridClientiMouseMove
       OnMouseUp = DBGridClientiMouseUp
     end
@@ -1281,15 +1295,15 @@ object frmMain: TfrmMain
   object panStanga: TPanel
     Left = 0
     Top = 35
-    Width = 185
-    Height = 454
+    Width = 134
+    Height = 474
     Align = alLeft
     Caption = 'panStanga'
     TabOrder = 4
     object imgSigla: TImage
       Left = 1
-      Top = 320
-      Width = 183
+      Top = 340
+      Width = 132
       Height = 133
       Cursor = crHandPoint
       Align = alBottom
@@ -1963,12 +1977,14 @@ object frmMain: TfrmMain
       Proportional = True
       Stretch = True
       OnClick = imgSiglaClick
+      ExplicitTop = 320
+      ExplicitWidth = 183
     end
     object TreeView1: TTreeView
       Left = 1
       Top = 1
-      Width = 183
-      Height = 319
+      Width = 132
+      Height = 339
       Align = alClient
       HideSelection = False
       Indent = 19
@@ -1976,7 +1992,7 @@ object frmMain: TfrmMain
       OnChange = TreeView1Change
       OnClick = TreeView1Click
       Items.NodeData = {
-        03030000002A000000000000000000000001000000FFFFFFFF01000000000000
+        03040000002A000000000000000000000001000000FFFFFFFF01000000000000
         000100000001064F0066006500720074006500340000000000000001000000FF
         FFFFFFFFFFFFFF000000000000000000000000010B4100700061007200740061
         006D0065006E00740065002C0000000000000000000000FFFFFFFFFFFFFFFF00
@@ -1984,14 +2000,15 @@ object frmMain: TfrmMain
         00000000000000FFFFFFFFFFFFFFFF000000000000000000000000010B410070
         0061007200740061006D0065006E00740065002C0000000000000000000000FF
         FFFFFFFFFFFFFF00000000000000000000000001074100670065006E00740069
-        006900}
+        0069002A0000000000000000000000FFFFFFFFFFFFFFFF000000000000000000
+        000000010641006C006500720074006500}
     end
   end
   object panAlerta: TPanel
     Left = 804
     Top = 35
     Width = 185
-    Height = 454
+    Height = 474
     Align = alRight
     BevelOuter = bvNone
     TabOrder = 5
@@ -1999,7 +2016,7 @@ object frmMain: TfrmMain
       Left = 0
       Top = 0
       Width = 185
-      Height = 454
+      Height = 474
       Align = alClient
       Buttons = [capClose]
       BorderStyle = bsNone
@@ -2013,25 +2030,139 @@ object frmMain: TfrmMain
       OutlookLook = False
       TabOrder = 0
       OnButtonClick = JvCaptionPanel1ButtonClick
-      object ListBox1: TListBox
+      DesignSize = (
+        185
+        474)
+      object DateTimePicker1: TDateTimePicker
         Left = 6
-        Top = 136
-        Width = 171
-        Height = 97
-        ItemHeight = 13
+        Top = 36
+        Width = 175
+        Height = 21
+        Date = 40367.480244502320000000
+        Time = 40367.480244502320000000
         TabOrder = 0
-        OnDragDrop = ListBox1DragDrop
-        OnDragOver = ListBox1DragOver
       end
-      object ListBox2: TListBox
+      object GroupBox1: TGroupBox
         Left = 6
-        Top = 258
-        Width = 171
-        Height = 97
-        ItemHeight = 13
+        Top = 63
+        Width = 175
+        Height = 122
+        Caption = 'Oferta'
         TabOrder = 1
-        OnDragDrop = ListBox2DragDrop
-        OnDragOver = ListBox2DragOver
+        object ListBox1: TListBox
+          Left = 2
+          Top = 57
+          Width = 171
+          Height = 63
+          Align = alBottom
+          Anchors = [akLeft, akTop, akRight, akBottom]
+          ItemHeight = 13
+          TabOrder = 0
+          OnDragDrop = ListBox1DragDrop
+          OnDragOver = ListBox1DragOver
+        end
+        object txtAlertaIdOferta: TLabeledEdit
+          Left = 2
+          Top = 30
+          Width = 38
+          Height = 21
+          EditLabel.Width = 11
+          EditLabel.Height = 13
+          EditLabel.Caption = 'ID'
+          ReadOnly = True
+          TabOrder = 1
+        end
+        object txtAlertaTipOferta: TLabeledEdit
+          Left = 44
+          Top = 30
+          Width = 125
+          Height = 21
+          EditLabel.Width = 14
+          EditLabel.Height = 13
+          EditLabel.Caption = 'Tip'
+          ReadOnly = True
+          TabOrder = 2
+        end
+      end
+      object GroupBox2: TGroupBox
+        Left = 6
+        Top = 191
+        Width = 175
+        Height = 122
+        Caption = 'Cerere'
+        TabOrder = 2
+        object ListBox2: TListBox
+          Left = 2
+          Top = 55
+          Width = 171
+          Height = 65
+          Align = alBottom
+          Anchors = [akLeft, akTop, akRight, akBottom]
+          ItemHeight = 13
+          TabOrder = 0
+          OnDragDrop = ListBox2DragDrop
+          OnDragOver = ListBox2DragOver
+        end
+        object txtAlertaIdCerere: TLabeledEdit
+          Left = 2
+          Top = 30
+          Width = 38
+          Height = 21
+          EditLabel.Width = 11
+          EditLabel.Height = 13
+          EditLabel.Caption = 'ID'
+          ReadOnly = True
+          TabOrder = 1
+        end
+        object txtAlertaTipCerere: TLabeledEdit
+          Left = 44
+          Top = 30
+          Width = 125
+          Height = 21
+          EditLabel.Width = 14
+          EditLabel.Height = 13
+          EditLabel.Caption = 'Tip'
+          ReadOnly = True
+          TabOrder = 2
+        end
+      end
+      object GroupBox3: TGroupBox
+        Left = 6
+        Top = 317
+        Width = 175
+        Height = 128
+        Anchors = [akLeft, akTop, akBottom]
+        Caption = 'Detalii'
+        TabOrder = 3
+        object memDetalii: TMemo
+          Left = 2
+          Top = 15
+          Width = 171
+          Height = 111
+          Align = alClient
+          TabOrder = 0
+        end
+      end
+      object btnAlertaSalveaza: TButton
+        Left = 104
+        Top = 447
+        Width = 75
+        Height = 25
+        Anchors = [akLeft, akBottom]
+        Caption = '&Salveaza'
+        TabOrder = 4
+        OnClick = btnAlertaSalveazaClick
+      end
+      object btnAlertaStergeTot: TButton
+        Left = 6
+        Top = 447
+        Width = 75
+        Height = 25
+        Anchors = [akLeft, akBottom]
+        Cancel = True
+        Caption = 'S&terge tot'
+        TabOrder = 5
+        OnClick = btnAlertaStergeTotClick
       end
     end
   end
@@ -2132,7 +2263,7 @@ object frmMain: TfrmMain
     end
   end
   object sqlDelete: TUpdateSQL
-    Left = 128
+    Left = 136
     Top = 256
   end
   object DataSource2: TDataSource
@@ -2143,5 +2274,12 @@ object frmMain: TfrmMain
   object queryClienti: TQuery
     Left = 24
     Top = 256
+  end
+  object timerAlerta: TTimer
+    Enabled = False
+    Interval = 500
+    OnTimer = timerAlertaTimer
+    Left = 192
+    Top = 200
   end
 end

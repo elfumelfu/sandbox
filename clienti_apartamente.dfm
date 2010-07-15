@@ -28,10 +28,11 @@ object frmClientiAp: TfrmClientiAp
     Left = 546
     Top = 230
     Width = 88
-    Height = 13
+    Height = 31
     Alignment = taCenter
     AutoSize = False
     Caption = 'Label8'
+    WordWrap = True
   end
   object GroupBox3: TGroupBox
     Left = 3
@@ -409,15 +410,6 @@ object frmClientiAp: TfrmClientiAp
     TabOrder = 5
     OnClick = btnStergeTotClick
   end
-  object btnInchiriat: TButton
-    Left = 551
-    Top = 267
-    Width = 75
-    Height = 25
-    Caption = 'A inchiriat'
-    TabOrder = 6
-    OnClick = btnInchiriatClick
-  end
   object btnSalveaza: TButton
     Left = 551
     Top = 360
@@ -425,7 +417,7 @@ object frmClientiAp: TfrmClientiAp
     Height = 25
     Caption = '&Salveaza'
     Default = True
-    TabOrder = 7
+    TabOrder = 6
     OnClick = btnSalveazaClick
   end
   object btnRenunta: TButton
@@ -435,8 +427,18 @@ object frmClientiAp: TfrmClientiAp
     Height = 25
     Cancel = True
     Caption = '&Renunta'
-    TabOrder = 8
+    TabOrder = 7
     OnClick = btnRenuntaClick
+  end
+  object btnInchiriat: TBitBtnWithColor
+    Left = 551
+    Top = 267
+    Width = 75
+    Height = 25
+    Caption = 'A inchiriat'
+    TabOrder = 8
+    OnClick = btnInchiriatClick
+    Color = clBtnFace
   end
   object insertQuery: TUpdateSQL
     Left = 264

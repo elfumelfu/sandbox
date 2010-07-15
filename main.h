@@ -26,6 +26,8 @@
 #include "JvNetscapeSplitter.hpp"
 #include "JvCaptionPanel.hpp"
 #include "JvExtComponent.hpp"
+#include "ButtonWithColor.hpp"
+
 
 #define SETARI_INI_FILE ExtractFilePath(Application->ExeName)+"setari.ini"
 
@@ -134,12 +136,24 @@ __published: // IDE-managed Components
 	TJvNetscapeSplitter *JvNetscapeSplitter1;
 	TPanel *panAlerta;
 	TJvCaptionPanel *JvCaptionPanel1;
-	TListBox *ListBox1;
 	TDBGrid *DBGridClienti;
 	TJvNetscapeSplitter *JvNetscapeSplitter2;
 	TDataSource *DataSource2;
 	TQuery *queryClienti;
+	TDateTimePicker *DateTimePicker1;
+	TGroupBox *GroupBox1;
+	TListBox *ListBox1;
+	TLabeledEdit *txtAlertaIdOferta;
+	TLabeledEdit *txtAlertaTipOferta;
+	TGroupBox *GroupBox2;
 	TListBox *ListBox2;
+	TLabeledEdit *txtAlertaIdCerere;
+	TLabeledEdit *txtAlertaTipCerere;
+	TGroupBox *GroupBox3;
+	TMemo *memDetalii;
+	TButton *btnAlertaSalveaza;
+	TButton *btnAlertaStergeTot;
+	TTimer *timerAlerta;
 
 	void __fastcall DatabaseAfterConnect(TObject *Sender);
 	void __fastcall Iesier1Click(TObject *Sender);
@@ -186,14 +200,19 @@ __published: // IDE-managed Components
 		int Y, TDragState State, bool &Accept);
 	void __fastcall ListBox2DragDrop(TObject *Sender, TObject *Source, int X,
 		int Y);
+	void __fastcall btnAlertaSalveazaClick(TObject *Sender);
+	void __fastcall btnAlertaStergeTotClick(TObject *Sender);
+	void __fastcall DBGridClientiDblClick(TObject *Sender);
+	void __fastcall DBGridClientiDrawColumnCell(TObject *Sender, const TRect &Rect, int DataCol, TColumn *Column, TGridDrawState State);
+	void __fastcall ListView1CustomDrawItem(TCustomListView *Sender, TListItem *Item, TCustomDrawState State, bool &DefaultDraw);
+	void __fastcall timerAlertaTimer(TObject *Sender);
+	void __fastcall StatusBarDrawPanel(TStatusBar *StatusBar, TStatusPanel *Panel, const TRect &Rect);
 
 private: // User declarations
 public: // User declarations
 	__fastcall TfrmMain(TComponent* Owner);
 
 	UnicodeString tabela;
-	UnicodeString defaultJudet;
-	UnicodeString defaultLocalitate;
 	int update;
 	TSetari setari;
 

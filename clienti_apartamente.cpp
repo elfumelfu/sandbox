@@ -7,6 +7,7 @@
 #include "main.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
+#pragma link "ButtonWithColor"
 #pragma resource "*.dfm"
 TfrmClientiAp *frmClientiAp;
 //---------------------------------------------------------------------------
@@ -21,9 +22,9 @@ locID=0;
 //---------------------------------------------------------------------------
 void __fastcall TfrmClientiAp::btnStergeTotClick(TObject *Sender)
 {
-txtJudet->ItemIndex=txtJudet->Items->IndexOf(frmMain->defaultJudet);
+txtJudet->ItemIndex=txtJudet->Items->IndexOf(frmMain->setari.judet);
 txtJudetChange(Sender);
-txtLocalitate->ItemIndex=txtLocalitate->Items->IndexOf(frmMain->defaultLocalitate);
+txtLocalitate->ItemIndex=txtLocalitate->Items->IndexOf(frmMain->setari.localitate);
 txtLocalitateChange(Sender);
 txtNrcam->ClearSelection();
 txtZonePreferate->ClearSelection();
@@ -50,9 +51,9 @@ frmClientiAp->Caption = "Adauga client apartament";
 Label7->Visible=false;
 Label8->Visible=false;
 frmMain->ComboList(txtJudet, "den", "judete", false, "");
-txtJudet->ItemIndex=txtJudet->Items->IndexOf(frmMain->defaultJudet);
+txtJudet->ItemIndex=txtJudet->Items->IndexOf(frmMain->setari.judet);
 txtJudetChange(Sender);
-txtLocalitate->ItemIndex=txtLocalitate->Items->IndexOf(frmMain->defaultLocalitate);
+txtLocalitate->ItemIndex=txtLocalitate->Items->IndexOf(frmMain->setari.localitate);
 txtLocalitateChange(Sender);
 
 if (frmClientiAp->operatie == "mod")
@@ -101,10 +102,13 @@ if (frmClientiAp->operatie == "mod")
 	memInfo->Text = frmMain->sqlSelect->FieldByName("informatii")->AsAnsiString;
 
     inchiriat=frmMain->sqlSelect->FieldByName("inchiriat")->AsInteger;
-	if (inchiriat)
+	if (inchiriat) {
 		btnInchiriat->Caption="Nu a inchiriat";
-	else
+		btnInchiriat->Color = clYellow;
+	} else {
 		btnInchiriat->Caption="A inchiriat";
+		btnInchiriat->Color = clBtnFace;
+	}
 
 	/*Mobilat*/
 	{

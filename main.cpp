@@ -25,6 +25,9 @@
 #define NR_CAMPURI_BOOL 13
 
 TfrmMain *frmMain;
+
+int blinkAlert = 0;
+
 char *campuri_bool[50] = {
 	"balcon", "gresie", "faianta", "termopan", "parchet", "um", "ct", "ac",
 	"apometre", "repartitoare", "boiler", "contorgaz", "inchiriat"
@@ -213,11 +216,25 @@ __fastcall TfrmMain::TfrmMain(TComponent* Owner) : TForm(Owner) {
 // ---------------------------------------------------------------------------
 
 void __fastcall TfrmMain::DatabaseAfterConnect(TObject *Sender) {
-	StatusBar->SimpleText = "Conectat la '" + Database->Params->ValueFromIndex
+
+	StatusBar->Panels->Items[1]->Text = "Conectat la '" + Database->Params->ValueFromIndex
 		[0] + "@" + Database->AliasName + "'.";
 
 	TTreeNode *node = TreeView1->TopItem->getFirstChild();
 	TreeView1->Selected = node;
+    sqlSelect->Close();
+	sqlSelect->DatabaseName = Database->DatabaseName;
+	sqlSelect->SQL->Clear();
+	UnicodeString data;
+	DateTimeToString(data, "YYYY-MM-dd" ,Date());
+	sqlSelect->SQL->Text = "SELECT count(*) as nralerte FROM alerte WHERE data ='"+ data +"'" ;
+	sqlSelect->Open();
+
+	if (sqlSelect->FieldByName("nralerte")->AsInteger) {
+		blinkAlert=1;
+        timerAlerta->Enabled=true;
+	}
+	sqlSelect->Close();
 }
 // ---------------------------------------------------------------------------
 
@@ -253,13 +270,23 @@ void __fastcall TfrmMain::TreeView1Change(TObject *Sender, TTreeNode *Node) {
 		orderby = "nume";
 		orderType = "ASC";
 	}
+    if (TreeView1->Selected->Text == "Alerte") {
+		Query1->SQL->Text = "SELECT * FROM alerte";
+		tabela = "alerte";
+		orderby = "data";
+		orderType = "DESC";
+		timerAlerta->Enabled=false;
+		blinkAlert = 0;
+		StatusBar->Repaint();
+	}
+
 	DBGrid1->Columns->LoadFromFile(ExtractFilePath(Application->ExeName)
 		+ tabela + ".grid");
 
 
 
 	Query1->Open();
-	DBGrid1CellClick(DBGrid1->Columns->Items[0]);
+    DBGrid1CellClick(DBGrid1->Columns->Items[0]);
 }
 // ---------------------------------------------------------------------------
 
@@ -275,8 +302,13 @@ void __fastcall TfrmMain::DBGrid1DblClick(TObject *Sender) {
 	sqlSelect->DatabaseName = Database->DatabaseName;
 	sqlSelect->SQL->Clear();
 
-	sqlSelect->SQL->Text = "SELECT * from " + tabela + " where id=" + Trim
+	if (tabela == "alerte") {
+	   sqlSelect->SQL->Text = "SELECT * from " + DBGrid1->SelectedField->DataSet->FieldByName("tabelaoferta")->AsString + " where id=" + Trim
+		(DBGrid1->SelectedField->DataSet->FieldByName("idoferta")->AsString);
+	}  else {
+	  sqlSelect->SQL->Text = "SELECT * from " + tabela + " where id=" + Trim
 		(DBGrid1->SelectedField->DataSet->FieldByName("id")->AsString);
+	}
 	sqlSelect->Open();
 
 	if (tabela == "apartamente") {
@@ -293,6 +325,48 @@ void __fastcall TfrmMain::DBGrid1DblClick(TObject *Sender) {
 		frmAgentii->ShowModal();
 		return;
 	}
+
+	if (tabela == "alerte") {
+		if (DBGrid1->SelectedField->DataSet->FieldByName("tabelaoferta")->AsString == "apartamente") {
+			frmAp->operatie = "mod";
+			frmAp->id = DBGrid1->SelectedField->DataSet->FieldByName("idoferta")
+				->AsInteger;
+			frmAp->ShowModal();
+			if (DBGrid1->SelectedField->DataSet->FieldByName("idcerere")->AsInteger) {
+               sqlSelect->SQL->Text = "SELECT * from " + DBGrid1->SelectedField->DataSet->FieldByName("tabelacerere")->AsString + " where id=" + Trim
+				(DBGrid1->SelectedField->DataSet->FieldByName("idcerere")->AsString);
+				sqlSelect->Close();
+				sqlSelect->Open();
+				frmClientiAp->operatie = "mod";
+				frmClientiAp->id = DBGrid1->SelectedField->DataSet->FieldByName("idcerere")
+				->AsInteger;
+				frmClientiAp->ShowModal();
+			}
+
+		} else
+		if (DBGrid1->SelectedField->DataSet->FieldByName("tabelaoferta")->AsString == "clienti_apartamente") {
+            frmClientiAp->operatie = "mod";
+			frmClientiAp->id = DBGrid1->SelectedField->DataSet->FieldByName("idoferta")
+				->AsInteger;
+			frmClientiAp->ShowModal();
+			if (DBGrid1->SelectedField->DataSet->FieldByName("idcerere")->AsInteger) {
+			sqlSelect->SQL->Text = "SELECT * from " + DBGrid1->SelectedField->DataSet->FieldByName("tabelacerere")->AsString + " where id=" + Trim
+		(DBGrid1->SelectedField->DataSet->FieldByName("idcerere")->AsString);
+
+		sqlSelect->Close();
+		sqlSelect->Open();
+		frmAp->operatie = "mod";
+		frmAp->id = DBGrid1->SelectedField->DataSet->FieldByName("idcerere")
+			->AsInteger;
+		frmAp->ShowModal();
+            }
+		}
+
+
+
+		return;
+	}
+
 	if (tabela == "clienti_apartamente") {
 		frmClientiAp->operatie = "mod";
 		frmClientiAp->id = DBGrid1->SelectedField->DataSet->FieldByName("id")
@@ -340,6 +414,9 @@ void __fastcall TfrmMain::Query1AfterOpen(TDataSet *DataSet) {
 
 	}
 	if (tabela == "agentii") {
+		panCombo->Visible = false;
+	}
+	if (tabela == "alerte") {
 		panCombo->Visible = false;
 	}
 
@@ -528,7 +605,7 @@ void __fastcall TfrmMain::cbNrCamChange(TObject *Sender) {
 void __fastcall TfrmMain::DBGrid1DrawColumnCell
 	(TObject *Sender, const TRect &Rect, int DataCol, TColumn *Column, TGridDrawState State) {
 
-	if (tabela == "agentii") {
+	if (tabela == "agentii" || tabela=="alerte") {
 		return;
 	}
 
@@ -569,7 +646,11 @@ void __fastcall TfrmMain::Cauta(char *text, char *field, char *table) {
 
 	strcat(buffer, "SELECT ");
 	strcat(buffer, field);
-	strcat(buffer, ",id from ");
+	strcat(buffer, ",id");
+	if ((strcmp(table,"agentii")!=0) && (strcmp(table,"alerte")!=0)){
+    	strcat(buffer,",inchiriat ");
+	}
+	strcat(buffer," from ");
 	strcat(buffer, table);
 	strcat(buffer, " where ");
 	strcat(buffer, field);
@@ -591,7 +672,10 @@ void __fastcall TfrmMain::Cauta(char *text, char *field, char *table) {
 			pItem->SubItems->Add(table);
 			pItem->SubItems->Add(getDen(table));
 			pItem->SubItems->Add(cbQuery->FieldByName(field)->AsString);
-
+			if ((strcmp(table,"agentii")!=0) && (strcmp(table,"alerte")!=0))
+				pItem->SubItems->Add(cbQuery->FieldByName("inchiriat")->AsString);
+			else
+            	pItem->SubItems->Add("0");
 			// if (i != cbQuery->RecordCount)
 			cbQuery->Next();
 			// }
@@ -686,7 +770,7 @@ void __fastcall TfrmMain::ListView1DblClick(TObject *Sender) {
 	tmpTable = ListView1->Selected->SubItems->Strings[0];
 
 	sqlSelect->SQL->Text = "SELECT * from " + tmpTable + " where id=" + Trim
-		(ListView1->Selected->Caption.ToInt());
+		(ListView1->Selected->Caption);
 	sqlSelect->Open();
 	if (tmpTable == "apartamente") {
 		frmAp->operatie = "mod";
@@ -747,6 +831,8 @@ void __fastcall TfrmMain::Sterge1Click(TObject *Sender) {
 // ---------------------------------------------------------------------------
 
 void __fastcall TfrmMain::FormClose(TObject *Sender, TCloseAction &Action) {
+	DBGrid1->Columns->SaveToFile(ExtractFilePath(Application->ExeName)
+		+ tabela + ".grid");
 	Database->Close();
 }
 // ---------------------------------------------------------------------------
@@ -850,9 +936,10 @@ void __fastcall TfrmMain::ListBox1DragOver
 
 void __fastcall TfrmMain::ListBox1DragDrop
 	(TObject *Sender, TObject *Source, int X, int Y) {
-	ListBox1->Items->Add(DBGrid1->SelectedField->DataSet->FieldByName("id")
-		->AsString + + " : " + DBGrid1->SelectedField->DataSet->FieldByName("telefon")
-		->AsString);
+
+	txtAlertaIdOferta->Text = DBGrid1->SelectedField->DataSet->FieldByName("id")->AsAnsiString;
+	txtAlertaTipOferta->Text = tabela;
+	ListBox1->Items->Text=DBGrid1->SelectedField->DataSet->FieldByName("telefon")->AsString;
 }
 // ---------------------------------------------------------------------------
 
@@ -869,7 +956,7 @@ void __fastcall TfrmMain::JvCaptionPanel1ButtonClick
 void __fastcall TfrmMain::DBGrid1MouseMove
 	(TObject *Sender, TShiftState Shift, int X, int Y) {
 
-	if (Shift.Contains(ssLeft)) {
+	if (Shift.Contains(ssLeft) && JvNetscapeSplitter1->Maximized == false) {
 		DBGrid1->BeginDrag(true, 5);
 	}
 
@@ -881,6 +968,7 @@ void __fastcall TfrmMain::DBGrid1CellClick(TColumn *Column) {
 	int valRon, valEur, valUsd;
 	int valMarjaRon, valMarjaEur, valMarjaUsd;
 	UnicodeString pretFormat, pretFormatAp;
+	int incl_inchiriate = 1;
 
 	if (tabela != "apartamente" && tabela != "clienti_apartamente") {
 		queryClienti->Close();
@@ -922,6 +1010,8 @@ void __fastcall TfrmMain::DBGrid1CellClick(TColumn *Column) {
 		wherePret.printf(pretFormat.w_str(), valRon - valMarjaRon,
 			valEur - valMarjaEur, valUsd - valMarjaUsd, valRon + valMarjaRon,
 			valEur + valMarjaEur, valUsd + valMarjaUsd);
+
+		incl_inchiriate = ckbInclInchiriate->Checked;
 
 	}
 	if (tabela == "clienti_apartamente") {
@@ -976,11 +1066,11 @@ void __fastcall TfrmMain::DBGrid1CellClick(TColumn *Column) {
 				whereZona += "(zona not in (" + zoneexcluse + ") ) ";
 			}
 		}
-        int valMaxRon, valMaxEur, valMaxUsd;
-        setValori(DBGrid1->SelectedField->DataSet->FieldByName("pret_min")
+		int valMaxRon, valMaxEur, valMaxUsd;
+		setValori(DBGrid1->SelectedField->DataSet->FieldByName("pret_min")
 			->AsInteger, DBGrid1->SelectedField->DataSet->FieldByName("moneda")->AsString,
 			valRon, valEur, valUsd);
-        setValori(DBGrid1->SelectedField->DataSet->FieldByName("pret_max")
+		setValori(DBGrid1->SelectedField->DataSet->FieldByName("pret_max")
 			->AsInteger, DBGrid1->SelectedField->DataSet->FieldByName("moneda")->AsString,
 			valMaxRon, valMaxEur, valMaxUsd);
 		wherePret.printf(pretFormatAp.w_str(), valRon - valMarjaRon,
@@ -989,7 +1079,8 @@ void __fastcall TfrmMain::DBGrid1CellClick(TColumn *Column) {
 
 		zone_preferate->Free();
 		zone_excluse->Free();
-
+		nrcam->Free();
+        incl_inchiriate = ckbClApInclInchiriate->Checked;
 	}
   DBGridClienti->Columns->LoadFromFile
 			(ExtractFilePath(Application->ExeName) + tabelaOpusa(tabela) +".grid" );
@@ -1007,7 +1098,9 @@ void __fastcall TfrmMain::DBGrid1CellClick(TColumn *Column) {
 		queryClienti->SQL->Text = queryClienti->SQL->Text + " and " + whereZona;
 	if (Trim(wherePret).Length() > 0)
 		queryClienti->SQL->Text = queryClienti->SQL->Text + " and " + wherePret;
-
+	if ( !incl_inchiriate) {
+		queryClienti->SQL->Text = queryClienti->SQL->Text + " and (inchiriat = 0)";
+	}
 
 	queryClienti->Open();
 }
@@ -1037,8 +1130,157 @@ void __fastcall TfrmMain::ListBox2DragOver
 
 void __fastcall TfrmMain::ListBox2DragDrop
 	(TObject *Sender, TObject *Source, int X, int Y) {
-	ListBox2->Items->Add(DBGridClienti->SelectedField->DataSet->FieldByName
-		("id")->AsString + + " : " + DBGridClienti->SelectedField->DataSet->FieldByName
-		("telefon")->AsString);
+	txtAlertaIdCerere->Text = DBGridClienti->SelectedField->DataSet->FieldByName("id")->AsAnsiString;
+	txtAlertaTipCerere->Text = tabelaOpusa(tabela);
+	ListBox2->Items->Text=DBGridClienti->SelectedField->DataSet->FieldByName("telefon")->AsString;
 }
 // ---------------------------------------------------------------------------
+void __fastcall TfrmMain::btnAlertaSalveazaClick(TObject *Sender)
+{
+	sqlDelete->DatabaseName = Database->DatabaseName;
+	sqlDelete->InsertSQL->Clear();
+
+	if (txtAlertaIdOferta->Text.Trim() == "" ) {
+		txtAlertaIdOferta->Text=0;
+	}
+	if (txtAlertaIdCerere->Text.Trim() == "" ) {
+		txtAlertaIdCerere->Text=0;
+	}
+
+	UnicodeString data;
+
+    DateTimeToString(data, "YYYY-MM-dd",DateTimePicker1->Date);
+
+	sqlDelete->InsertSQL->Text = "INSERT INTO alerte (idoferta, tabelaoferta, \
+			idcerere, tabelacerere, detalii, data) VALUES (" +
+			txtAlertaIdOferta->Text + ",'"+
+			txtAlertaTipOferta->Text + "',"+
+			txtAlertaIdCerere->Text + ",'"+
+			txtAlertaTipCerere->Text + "','"+
+			memDetalii->Text +"','" +
+			data + "')";
+
+	sqlDelete->ExecSQL(ukInsert);
+	btnAlertaStergeTotClick(Sender);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TfrmMain::btnAlertaStergeTotClick(TObject *Sender)
+{
+txtAlertaIdOferta->Text ="";
+txtAlertaTipOferta->Text ="";
+txtAlertaIdCerere->Text ="";
+txtAlertaTipCerere->Text ="";
+memDetalii->Text ="";
+DateTimePicker1->Date=Date();
+ListBox1->Items->Clear();
+ListBox2->Items->Clear();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TfrmMain::DBGridClientiDblClick(TObject *Sender)
+{
+sqlSelect->Close();
+	sqlSelect->DatabaseName = Database->DatabaseName;
+	sqlSelect->SQL->Clear();
+
+
+	  sqlSelect->SQL->Text = "SELECT * from " + tabelaOpusa(tabela) + " where id=" + Trim
+		(DBGridClienti->SelectedField->DataSet->FieldByName("id")->AsString);
+
+	sqlSelect->Open();
+
+	if (tabelaOpusa(tabela) == "apartamente") {
+		frmAp->operatie = "mod";
+		frmAp->id = DBGridClienti->SelectedField->DataSet->FieldByName("id")
+			->AsInteger;
+		frmAp->ShowModal();
+		return;
+	}
+
+
+	if (tabelaOpusa(tabela) == "clienti_apartamente") {
+		frmClientiAp->operatie = "mod";
+		frmClientiAp->id = DBGridClienti->SelectedField->DataSet->FieldByName("id")
+			->AsInteger;
+		frmClientiAp->ShowModal();
+	}
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TfrmMain::DBGridClientiDrawColumnCell(TObject *Sender, const TRect &Rect, int DataCol, TColumn *Column, TGridDrawState State)
+{
+
+	if (Column->Field->DataSet->FieldByName("inchiriat")->AsInteger == 1)
+		DBGridClienti->Canvas->Brush->Color = clYellow;
+
+	if (State.Contains(gdSelected)) {
+		DBGridClienti->Canvas->Brush->Color = clNavy;
+
+		if (Column->Field->DataSet->FieldByName("inchiriat")->AsInteger == 1)
+			DBGridClienti->Canvas->Font->Color = clYellow;
+		else
+			DBGridClienti->Canvas->Font->Color = clWhite;
+	}
+	else
+		DBGridClienti->Canvas->Font->Color = clBlack;
+
+	DBGridClienti->DefaultDrawColumnCell(Rect, DataCol, Column, State);
+}
+//---------------------------------------------------------------------------
+
+
+void __fastcall TfrmMain::ListView1CustomDrawItem(TCustomListView *Sender, TListItem *Item, TCustomDrawState State, bool &DefaultDraw)
+{
+  if (Item->SubItems->Strings[3] == "1")
+	ListView1->Canvas->Brush->Color = clYellow;
+
+  if (State.Contains(gdSelected)) {
+		ListView1->Canvas->Brush->Color = clNavy;
+
+		if (Item->SubItems->Strings[3] == "1")
+			ListView1->Canvas->Font->Color = clYellow;
+		else
+			ListView1->Canvas->Font->Color = clWhite;
+	}
+	else
+		ListView1->Canvas->Font->Color = clBlack;
+}
+//---------------------------------------------------------------------------
+
+
+void __fastcall TfrmMain::timerAlertaTimer(TObject *Sender)
+{
+StatusBar->Repaint();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TfrmMain::StatusBarDrawPanel(TStatusBar *StatusBar, TStatusPanel *Panel, const TRect &Rect)
+{
+  if (blinkAlert == 1) {
+	/*StatusBar1->Canvas->Brush->Color=clRed;
+	StatusBar1->Canvas->FillRect(Rect);  */
+	StatusBar->Canvas->Font->Name  = "Arial";
+	StatusBar->Canvas->Font->Color = clRed;
+	StatusBar->Canvas->Font->Style = StatusBar->Canvas->Font->Style << fsBold;
+	StatusBar->Canvas->TextRect(Rect, Rect.Width() / 2 - 15, Rect.Top, "Alerte !!!");
+
+	blinkAlert = 2;
+  } else if (blinkAlert == 2) {
+   /*	StatusBar1->Canvas->Brush->Color=clBtnFace;
+	StatusBar1->Canvas->FillRect(Rect);*/
+	StatusBar->Canvas->Font->Name  = "Arial";
+	StatusBar->Canvas->Font->Color = clBlack;
+	StatusBar->Canvas->Font->Style = StatusBar->Canvas->Font->Style << fsBold;
+	StatusBar->Canvas->TextRect(Rect, Rect.Width() / 2 - 15, Rect.Top, "Alerte !!!");
+	blinkAlert = 1;
+  } else {
+	StatusBar->Canvas->Font->Name  = "Arial";
+	StatusBar->Canvas->Font->Color = clBlack;
+	StatusBar->Canvas->Font->Style = StatusBar->Canvas->Font->Style << fsBold;
+	StatusBar->Canvas->TextRect(Rect, Rect.Width() / 2 - 15, Rect.Top, "");
+  }
+}
+//---------------------------------------------------------------------------
+
+

@@ -6,6 +6,7 @@
 #include "apartamente.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
+#pragma link "ButtonWithColor"
 #pragma resource "*.dfm"
 
 #include "main.h"
@@ -263,9 +264,9 @@ frmAp->Close();
 
 void __fastcall TfrmAp::btnStergeTotClick(TObject *Sender)
 {
-txtJudet->ItemIndex=txtJudet->Items->IndexOf(frmMain->defaultJudet);
+txtJudet->ItemIndex=txtJudet->Items->IndexOf(frmMain->setari.judet);
 txtJudetChange(Sender);
-txtLocalitate->ItemIndex=txtLocalitate->Items->IndexOf(frmMain->defaultLocalitate);
+txtLocalitate->ItemIndex=txtLocalitate->Items->IndexOf(frmMain->setari.localitate);
 txtLocalitateChange(Sender);
 txtNrcam->ItemIndex= -1;
 txtZona->ItemIndex= -1;
@@ -315,9 +316,9 @@ frmAp->Caption = "Adauga apartament";
 Label7->Visible=false;
 Label8->Visible=false;
 frmMain->ComboList(txtJudet, "den", "judete", false, "");
-txtJudet->ItemIndex=txtJudet->Items->IndexOf(frmMain->defaultJudet);
+txtJudet->ItemIndex=txtJudet->Items->IndexOf(frmMain->setari.judet);
 txtJudetChange(Sender);
-txtLocalitate->ItemIndex=txtLocalitate->Items->IndexOf(frmMain->defaultLocalitate);
+txtLocalitate->ItemIndex=txtLocalitate->Items->IndexOf(frmMain->setari.localitate);
 txtLocalitateChange(Sender);
 txtZona->ItemIndex=-1;
 
@@ -393,10 +394,13 @@ if (frmAp->operatie == "mod")
 	memInfo->Text = frmMain->sqlSelect->FieldByName("info_prop")->AsAnsiString;;
 	txtDataExpirarii->DateTime=frmMain->sqlSelect->FieldByName("data_expirarii")->AsDateTime;
 	inchiriat=frmMain->sqlSelect->FieldByName("inchiriat")->AsInteger;
-	if (inchiriat)
+	if (inchiriat) {
 		btnInchiriat->Caption="Neinchiriat";
-	else
+        btnInchiriat->Color = clYellow;
+	} else {
 		btnInchiriat->Caption="Inchiriat";
+		btnInchiriat->Color = clBtnFace;
+	}
 
 	Label7->Visible=true;
 	Label8->Visible=true;

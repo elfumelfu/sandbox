@@ -18,6 +18,7 @@
 #include <DB.hpp>
 #include <FMTBcd.hpp>
 #include <SqlExpr.hpp>
+#include "ButtonWithColor.hpp"
 //---------------------------------------------------------------------------
 class TfrmAp : public TForm
 {
@@ -49,7 +50,6 @@ __published:	// IDE-managed Components
 	TComboBox *txtDsc;
 	TLabel *Label5;
 	TRadioGroup *rgUtilat;
-	TButton *btnInchiriat;
 	TImage *imgPoza1;
 	TImage *imgPoza2;
 	TImage *imgPoza3;
@@ -70,6 +70,7 @@ __published:	// IDE-managed Components
 	TButton *btnLocalitate;
 	TUpdateSQL *insertQuery;
 	TButton *btnZona;
+	TBitBtnWithColor *btnInchiriat;
 	void __fastcall btnSalveazaClick(TObject *Sender);
 	void __fastcall btnStergeTotClick(TObject *Sender);
 	void __fastcall btnRenuntaClick(TObject *Sender);
