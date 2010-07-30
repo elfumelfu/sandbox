@@ -807,15 +807,32 @@ void __fastcall TfrmMain::DBGrid1MouseUp(TObject *Sender, TMouseButton Button,
 // ---------------------------------------------------------------------------
 
 void __fastcall TfrmMain::Detalii1Click(TObject *Sender) {
-	DBGrid1DblClick(Sender);
+
+	if (panCauta->Visible == true ) {
+		ListView1DblClick(Sender);
+	} else {
+		DBGrid1DblClick(Sender);
+	}
+
+
 }
 // ---------------------------------------------------------------------------
 
 void __fastcall TfrmMain::Sterge1Click(TObject *Sender) {
+	UnicodeString id,tabela_tmp;
+
+	if (panCauta->Visible == true ) {
+		id=Trim(ListView1->Selected->Caption);
+		tabela_tmp= ListView1->Selected->SubItems->Strings[0];
+	} else {
+		id=Trim(DBGrid1->SelectedField->DataSet->FieldByName("id")->AsString);
+		tabela_tmp=tabela;
+	}
+
+
 	sqlDelete->DatabaseName = Database->DatabaseName;
 	sqlDelete->DeleteSQL->Clear();
-	sqlDelete->DeleteSQL->Text = "DELETE FROM " + tabela + " WHERE id=" + Trim
-		(DBGrid1->SelectedField->DataSet->FieldByName("id")->AsString);
+	sqlDelete->DeleteSQL->Text = "DELETE FROM " + tabela_tmp + " WHERE id=" + id;
 
 	UnicodeString msg =
 		"Sunteti sigur ca doriti sa stergeti inregistrarea selectata??";

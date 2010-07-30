@@ -1,6 +1,7 @@
 object frmSetari: TfrmSetari
   Left = 0
   Top = 0
+  BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'Setari'
   ClientHeight = 352
@@ -26,7 +27,6 @@ object frmSetari: TfrmSetari
     Alignment = taLeftJustify
     BevelOuter = bvNone
     TabOrder = 0
-    ExplicitHeight = 350
     object imgSigla: TImage
       Left = 0
       Top = 219
@@ -719,8 +719,6 @@ object frmSetari: TfrmSetari
       Items.NodeData = {
         03010000002C0000000000000000000000FFFFFFFFFFFFFFFF00000000000000
         00000000000107470065006E006500720061006C00}
-      ExplicitWidth = 161
-      ExplicitHeight = 217
     end
   end
   object panDreapta: TPanel
@@ -731,10 +729,6 @@ object frmSetari: TfrmSetari
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 1
-    ExplicitLeft = -8
-    ExplicitTop = 152
-    ExplicitWidth = 185
-    ExplicitHeight = 41
     object panButoane: TPanel
       Left = 0
       Top = 317
@@ -743,9 +737,6 @@ object frmSetari: TfrmSetari
       Align = alBottom
       BevelOuter = bvNone
       TabOrder = 0
-      ExplicitLeft = 6
-      ExplicitTop = 315
-      ExplicitWidth = 305
       object btnSalveaza: TButton
         Left = 228
         Top = 6
@@ -766,9 +757,6 @@ object frmSetari: TfrmSetari
       Alignment = taLeftJustify
       BevelOuter = bvNone
       TabOrder = 1
-      ExplicitLeft = 161
-      ExplicitWidth = 314
-      ExplicitHeight = 350
       object GroupBox1: TGroupBox
         Left = 9
         Top = 0

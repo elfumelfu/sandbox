@@ -1,6 +1,7 @@
 object frmClientiAp: TfrmClientiAp
   Left = 0
   Top = 0
+  BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'Adauga client apartamente'
   ClientHeight = 393

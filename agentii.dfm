@@ -1,9 +1,11 @@
 object frmAgentii: TfrmAgentii
   Left = 0
   Top = 0
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsSingle
   Caption = 'Agentii'
-  ClientHeight = 120
-  ClientWidth = 253
+  ClientHeight = 122
+  ClientWidth = 252
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText

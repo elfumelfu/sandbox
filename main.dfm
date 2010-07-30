@@ -2,7 +2,7 @@ object frmMain: TfrmMain
   Left = 0
   Top = 0
   Caption = 'se-inchiriaza.ro'
-  ClientHeight = 528
+  ClientHeight = 548
   ClientWidth = 989
   Color = clBtnFace
   DefaultMonitor = dmMainForm
@@ -300,7 +300,7 @@ object frmMain: TfrmMain
   object Splitter1: TSplitter
     Left = 134
     Top = 35
-    Height = 474
+    Height = 494
     Visible = False
     ExplicitLeft = 182
     ExplicitTop = 29
@@ -309,7 +309,7 @@ object frmMain: TfrmMain
   object JvNetscapeSplitter1: TJvNetscapeSplitter
     Left = 794
     Top = 35
-    Height = 474
+    Height = 494
     Align = alRight
     MinSize = 1
     Maximized = False
@@ -322,7 +322,7 @@ object frmMain: TfrmMain
   end
   object StatusBar: TStatusBar
     Left = 0
-    Top = 509
+    Top = 529
     Width = 989
     Height = 19
     Panels = <
@@ -334,26 +334,28 @@ object frmMain: TfrmMain
         Width = 50
       end>
     OnDrawPanel = StatusBarDrawPanel
+    ExplicitTop = 509
   end
   object panCauta: TPanel
     Left = 137
     Top = 35
     Width = 657
-    Height = 474
+    Height = 494
     Align = alClient
     Alignment = taLeftJustify
     Caption = 'Introduceti textul dorit'
     TabOrder = 2
     VerticalAlignment = taAlignTop
     Visible = False
+    ExplicitHeight = 474
     DesignSize = (
       657
-      474)
+      494)
     object ListView1: TListView
       Left = 1
       Top = 51
       Width = 655
-      Height = 422
+      Height = 442
       Align = alBottom
       Anchors = [akLeft, akTop, akRight, akBottom]
       Columns = <
@@ -376,10 +378,12 @@ object frmMain: TfrmMain
       MultiSelect = True
       ReadOnly = True
       RowSelect = True
+      PopupMenu = pmDelete
       TabOrder = 0
       ViewStyle = vsReport
       OnCustomDrawItem = ListView1CustomDrawItem
       OnDblClick = ListView1DblClick
+      ExplicitHeight = 422
     end
     object txtCauta: TEdit
       Left = 3
@@ -405,14 +409,15 @@ object frmMain: TfrmMain
     Left = 137
     Top = 35
     Width = 657
-    Height = 474
+    Height = 494
     Align = alClient
     Alignment = taLeftJustify
     Caption = 'panMain'
     TabOrder = 1
+    ExplicitHeight = 474
     object JvNetscapeSplitter2: TJvNetscapeSplitter
       Left = 1
-      Top = 278
+      Top = 298
       Width = 655
       Height = 10
       Cursor = crVSplit
@@ -429,7 +434,7 @@ object frmMain: TfrmMain
       Left = 1
       Top = 57
       Width = 655
-      Height = 221
+      Height = 241
       Align = alClient
       DataSource = DataSource1
       DrawingStyle = gdsGradient
@@ -1052,7 +1057,7 @@ object frmMain: TfrmMain
     end
     object DBGridClienti: TDBGrid
       Left = 1
-      Top = 288
+      Top = 308
       Width = 655
       Height = 185
       Align = alBottom
@@ -1296,13 +1301,14 @@ object frmMain: TfrmMain
     Left = 0
     Top = 35
     Width = 134
-    Height = 474
+    Height = 494
     Align = alLeft
     Caption = 'panStanga'
     TabOrder = 4
+    ExplicitHeight = 474
     object imgSigla: TImage
       Left = 1
-      Top = 340
+      Top = 360
       Width = 132
       Height = 133
       Cursor = crHandPoint
@@ -1984,7 +1990,7 @@ object frmMain: TfrmMain
       Left = 1
       Top = 1
       Width = 132
-      Height = 339
+      Height = 359
       Align = alClient
       HideSelection = False
       Indent = 19
@@ -1993,30 +1999,33 @@ object frmMain: TfrmMain
       OnClick = TreeView1Click
       Items.NodeData = {
         03040000002A000000000000000000000001000000FFFFFFFF01000000000000
-        000100000001064F0066006500720074006500340000000000000001000000FF
+        000200000001064F0066006500720074006500340000000000000001000000FF
         FFFFFFFFFFFFFF000000000000000000000000010B4100700061007200740061
-        006D0065006E00740065002C0000000000000000000000FFFFFFFFFFFFFFFF00
-        0000000000000001000000010743006C00690065006E00740069003400000000
-        00000000000000FFFFFFFFFFFFFFFF000000000000000000000000010B410070
-        0061007200740061006D0065006E00740065002C0000000000000000000000FF
-        FFFFFFFFFFFFFF00000000000000000000000001074100670065006E00740069
-        0069002A0000000000000000000000FFFFFFFFFFFFFFFF000000000000000000
-        000000010641006C006500720074006500}
+        006D0065006E0074006500260000000000000000000000FFFFFFFFFFFFFFFF00
+        0000000000000000000000010443006100730065002C00000000000000000000
+        00FFFFFFFFFFFFFFFF000000000000000001000000010743006C00690065006E
+        0074006900340000000000000000000000FFFFFFFFFFFFFFFF00000000000000
+        0000000000010B4100700061007200740061006D0065006E00740065002C0000
+        000000000000000000FFFFFFFFFFFFFFFF000000000000000000000000010741
+        00670065006E007400690069002A0000000000000000000000FFFFFFFFFFFFFF
+        FF000000000000000000000000010641006C006500720074006500}
+      ExplicitHeight = 339
     end
   end
   object panAlerta: TPanel
     Left = 804
     Top = 35
     Width = 185
-    Height = 474
+    Height = 494
     Align = alRight
     BevelOuter = bvNone
     TabOrder = 5
+    ExplicitHeight = 474
     object JvCaptionPanel1: TJvCaptionPanel
       Left = 0
       Top = 0
       Width = 185
-      Height = 474
+      Height = 494
       Align = alClient
       Buttons = [capClose]
       BorderStyle = bsNone
@@ -2030,9 +2039,10 @@ object frmMain: TfrmMain
       OutlookLook = False
       TabOrder = 0
       OnButtonClick = JvCaptionPanel1ButtonClick
+      ExplicitHeight = 474
       DesignSize = (
         185
-        474)
+        494)
       object DateTimePicker1: TDateTimePicker
         Left = 6
         Top = 36
@@ -2130,32 +2140,35 @@ object frmMain: TfrmMain
         Left = 6
         Top = 317
         Width = 175
-        Height = 128
+        Height = 148
         Anchors = [akLeft, akTop, akBottom]
         Caption = 'Detalii'
         TabOrder = 3
+        ExplicitHeight = 128
         object memDetalii: TMemo
           Left = 2
           Top = 15
           Width = 171
-          Height = 111
+          Height = 131
           Align = alClient
           TabOrder = 0
+          ExplicitHeight = 111
         end
       end
       object btnAlertaSalveaza: TButton
         Left = 104
-        Top = 447
+        Top = 467
         Width = 75
         Height = 25
         Anchors = [akLeft, akBottom]
         Caption = '&Salveaza'
         TabOrder = 4
         OnClick = btnAlertaSalveazaClick
+        ExplicitTop = 447
       end
       object btnAlertaStergeTot: TButton
         Left = 6
-        Top = 447
+        Top = 467
         Width = 75
         Height = 25
         Anchors = [akLeft, akBottom]
@@ -2163,6 +2176,7 @@ object frmMain: TfrmMain
         Caption = 'S&terge tot'
         TabOrder = 5
         OnClick = btnAlertaStergeTotClick
+        ExplicitTop = 447
       end
     end
   end

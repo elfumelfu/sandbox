@@ -1,6 +1,7 @@
 object frmAp: TfrmAp
   Left = 0
   Top = 0
+  BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'Adauga oferta apartament'
   ClientHeight = 439
