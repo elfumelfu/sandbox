@@ -294,6 +294,7 @@ object frmMain: TfrmMain
   Position = poScreenCenter
   WindowState = wsMaximized
   OnClose = FormClose
+  OnResize = FormResize
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13

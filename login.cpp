@@ -46,3 +46,5 @@ void __fastcall TfrmLogin::FormClose(TObject *Sender, TCloseAction &Action)
 Action=caFree; 
 }
 //---------------------------------------------------------------------------
+
+

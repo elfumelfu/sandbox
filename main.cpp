@@ -1301,3 +1301,29 @@ void __fastcall TfrmMain::StatusBarDrawPanel(TStatusBar *StatusBar, TStatusPanel
 //---------------------------------------------------------------------------
 
 
+void __fastcall TfrmMain::FormResize(TObject *Sender)
+{
+int size = 0, visi=0;
+for (int i = 0; i < DBGrid1->Columns->Count; i++) {
+	if (DBGrid1->Columns->Items[i]->Visible) {
+		size +=DBGrid1->Columns->Items[i]->Width;
+		visi++;
+	}
+}
+/*if (DBGrid1->Width > size) {  */
+	for (int i = 0; i < DBGrid1->Columns->Count; i++) {
+		if (DBGrid1->Columns->Items[i]->Visible) {
+			DBGrid1->Columns->Items[i]->Width += (DBGrid1->Width - size)/visi;
+		}
+	}
+/*} else {
+		for (int i = 0; i < DBGrid1->Columns->Count; i++) {
+		if (DBGrid1->Columns->Items[i]->Visible) {
+			DBGrid1->Columns->Items[i]->Width -= (DBGrid1->Width - size)/visi;
+		}
+	}
+}    */
+
+}
+//---------------------------------------------------------------------------
+

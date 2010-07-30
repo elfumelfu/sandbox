@@ -207,6 +207,7 @@ __published: // IDE-managed Components
 	void __fastcall ListView1CustomDrawItem(TCustomListView *Sender, TListItem *Item, TCustomDrawState State, bool &DefaultDraw);
 	void __fastcall timerAlertaTimer(TObject *Sender);
 	void __fastcall StatusBarDrawPanel(TStatusBar *StatusBar, TStatusPanel *Panel, const TRect &Rect);
+	void __fastcall FormResize(TObject *Sender);
 
 private: // User declarations
 public: // User declarations
