@@ -903,13 +903,10 @@ void __fastcall TfrmMain::Backup1Click(TObject *Sender) {
 	if (!DirectoryExists(path)) {
 		CreateDir(path);
 	}
-
+	UnicodeString tmp;
+	DateTimeToString(tmp, "YYYY-MM-dd",Date());
 	cmd = "cmd /c \"mysqldump se_inchiriaza --host=85.121.123.134 -u" + user +
-		" -p" + password + "> \"" + path + "backup_db_" + DateTimeToStr(Date())
-		+ "\"\""; /* +
-	+
-	"> " + ExtractFilePath(Application->ExeName) +
-	; */
+		" -pchirie > \"" + path + "backup_db_" + tmp + "\"\"";
 
 	WinExec(cmd.t_str(), SW_HIDE);
 

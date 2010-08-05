@@ -335,7 +335,6 @@ object frmMain: TfrmMain
         Width = 50
       end>
     OnDrawPanel = StatusBarDrawPanel
-    ExplicitTop = 509
   end
   object panCauta: TPanel
     Left = 137
@@ -348,7 +347,6 @@ object frmMain: TfrmMain
     TabOrder = 2
     VerticalAlignment = taAlignTop
     Visible = False
-    ExplicitHeight = 474
     DesignSize = (
       657
       494)
@@ -384,7 +382,6 @@ object frmMain: TfrmMain
       ViewStyle = vsReport
       OnCustomDrawItem = ListView1CustomDrawItem
       OnDblClick = ListView1DblClick
-      ExplicitHeight = 422
     end
     object txtCauta: TEdit
       Left = 3
@@ -415,7 +412,6 @@ object frmMain: TfrmMain
     Alignment = taLeftJustify
     Caption = 'panMain'
     TabOrder = 1
-    ExplicitHeight = 474
     object JvNetscapeSplitter2: TJvNetscapeSplitter
       Left = 1
       Top = 298
@@ -1306,7 +1302,6 @@ object frmMain: TfrmMain
     Align = alLeft
     Caption = 'panStanga'
     TabOrder = 4
-    ExplicitHeight = 474
     object imgSigla: TImage
       Left = 1
       Top = 360
@@ -2010,7 +2005,6 @@ object frmMain: TfrmMain
         000000000000000000FFFFFFFFFFFFFFFF000000000000000000000000010741
         00670065006E007400690069002A0000000000000000000000FFFFFFFFFFFFFF
         FF000000000000000000000000010641006C006500720074006500}
-      ExplicitHeight = 339
     end
   end
   object panAlerta: TPanel
@@ -2021,7 +2015,6 @@ object frmMain: TfrmMain
     Align = alRight
     BevelOuter = bvNone
     TabOrder = 5
-    ExplicitHeight = 474
     object JvCaptionPanel1: TJvCaptionPanel
       Left = 0
       Top = 0
@@ -2040,7 +2033,6 @@ object frmMain: TfrmMain
       OutlookLook = False
       TabOrder = 0
       OnButtonClick = JvCaptionPanel1ButtonClick
-      ExplicitHeight = 474
       DesignSize = (
         185
         494)
@@ -2145,7 +2137,6 @@ object frmMain: TfrmMain
         Anchors = [akLeft, akTop, akBottom]
         Caption = 'Detalii'
         TabOrder = 3
-        ExplicitHeight = 128
         object memDetalii: TMemo
           Left = 2
           Top = 15
@@ -2153,7 +2144,6 @@ object frmMain: TfrmMain
           Height = 131
           Align = alClient
           TabOrder = 0
-          ExplicitHeight = 111
         end
       end
       object btnAlertaSalveaza: TButton
@@ -2165,7 +2155,6 @@ object frmMain: TfrmMain
         Caption = '&Salveaza'
         TabOrder = 4
         OnClick = btnAlertaSalveazaClick
-        ExplicitTop = 447
       end
       object btnAlertaStergeTot: TButton
         Left = 6
@@ -2177,7 +2166,6 @@ object frmMain: TfrmMain
         Caption = 'S&terge tot'
         TabOrder = 5
         OnClick = btnAlertaStergeTotClick
-        ExplicitTop = 447
       end
     end
   end
