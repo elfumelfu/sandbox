@@ -20,8 +20,9 @@
 #include "clienti_apartamente.h"
 #include "setari.h"
 #include "tools.h"
+#include "case.h"
 
-#define NR_TABLES 3
+#define NR_TABLES 4
 #define NR_CAMPURI_BOOL 13
 
 TfrmMain *frmMain;
@@ -38,6 +39,10 @@ char *den_table[50][2] = { {
 		"Agentii", "agentii"
 	}, {
 		"Clienti apartamente", "clienti_apartamente"
+	} , {
+		"Oferte case", "casa"
+	} , {
+		"Clienti case", "clienti_casa"
 	}
 };
 
@@ -245,15 +250,24 @@ void __fastcall TfrmMain::Iesier1Click(TObject *Sender) {
 // ---------------------------------------------------------------------------
 
 void __fastcall TfrmMain::TreeView1Change(TObject *Sender, TTreeNode *Node) {
+
 	panCauta->Visible = false;
 	Query1->Close();
 	Query1->DatabaseName = Database->DatabaseName;
+
 	DBGrid1->Columns->SaveToFile(ExtractFilePath(Application->ExeName)
 		+ tabela + ".grid");
 	if (TreeView1->Selected->Text == "Apartamente" &&
 		(TreeView1->Selected->GetPrev()->Text == "Oferte") || TreeView1->Selected->Text == "Oferte") {
 		Query1->SQL->Text = "SELECT * FROM apartamente";
 		tabela = "apartamente";
+		orderby = "data_modificarii";
+		orderType = "DESC";
+	}
+	if (TreeView1->Selected->Text == "Case" &&
+		(TreeView1->Selected->Parent->Text == "Oferte") ) {
+		Query1->SQL->Text = "SELECT * FROM casa";
+		tabela = "casa";
 		orderby = "data_modificarii";
 		orderType = "DESC";
 	}
@@ -316,6 +330,13 @@ void __fastcall TfrmMain::DBGrid1DblClick(TObject *Sender) {
 		frmAp->id = DBGrid1->SelectedField->DataSet->FieldByName("id")
 			->AsInteger;
 		frmAp->ShowModal();
+		return;
+	}
+	if (tabela == "casa") {
+		frmCase->operatie = "mod";
+		frmCase->id = DBGrid1->SelectedField->DataSet->FieldByName("id")
+			->AsInteger;
+		frmCase->ShowModal();
 		return;
 	}
 	if (tabela == "agentii") {
@@ -857,9 +878,9 @@ void __fastcall TfrmMain::FormClose(TObject *Sender, TCloseAction &Action) {
 void __fastcall TfrmMain::imgRefreshClick(TObject *Sender) {
 	Query1->Close();
 	Query1->Open();
-	if (tabela == "apartamente") {
+//	if (tabela == "apartamente") {
 		cbNrCamChange(Sender);
-	}
+//	}
 
 }
 // ---------------------------------------------------------------------------
@@ -1321,6 +1342,13 @@ for (int i = 0; i < DBGrid1->Columns->Count; i++) {
 	}
 }    */
 
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TfrmMain::Case1Click(TObject *Sender)
+{
+frmCase->operatie = "add";
+frmCase->ShowModal();
 }
 //---------------------------------------------------------------------------
 

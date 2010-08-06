@@ -4,13 +4,14 @@
 #include <vcl.h>
 #pragma hdrstop
 //---------------------------------------------------------------------------
-USEFORM("apartamente.cpp", frmAp);
-USEFORM("login.cpp", frmLogin);
-USEFORM("clienti_apartamente.cpp", frmClientiAp);
-USEFORM("agentii.cpp", frmAgentii);
-USEFORM("main.cpp", frmMain);
 USEFORM("imagine.cpp", frmImagine);
 USEFORM("setari.cpp", frmSetari);
+USEFORM("login.cpp", frmLogin);
+USEFORM("apartamente.cpp", frmAp);
+USEFORM("clienti_apartamente.cpp", frmClientiAp);
+USEFORM("main.cpp", frmMain);
+USEFORM("agentii.cpp", frmAgentii);
+USEFORM("case.cpp", frmCase);
 //---------------------------------------------------------------------------
 #include "login.h"
 #include "main.h"
@@ -28,6 +29,7 @@ WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 		Application->CreateForm(__classid(TfrmImagine), &frmImagine);
 		Application->CreateForm(__classid(TfrmClientiAp), &frmClientiAp);
 		Application->CreateForm(__classid(TfrmSetari), &frmSetari);
+		Application->CreateForm(__classid(TfrmCase), &frmCase);
 		frmLogin->Hide();
 		frmLogin->ShowModal();
         Application->Run();

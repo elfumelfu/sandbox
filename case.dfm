@@ -1,11 +1,11 @@
-object frmAp: TfrmAp
+object frmCase: TfrmCase
   Left = 0
   Top = 0
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
-  Caption = 'Adauga oferta apartament'
-  ClientHeight = 439
-  ClientWidth = 557
+  Caption = 'Adaugare case'
+  ClientHeight = 428
+  ClientWidth = 545
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -13,13 +13,12 @@ object frmAp: TfrmAp
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
-  Position = poMainFormCenter
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object imgPoza1: TImage
-    Left = 8
-    Top = 359
+    Left = 2
+    Top = 352
     Width = 70
     Height = 70
     Cursor = crHandPoint
@@ -1491,12 +1490,10 @@ object frmAp: TfrmAp
       EBDD7FFFD9}
     Proportional = True
     Transparent = True
-    OnClick = imgPoza1Click
-    OnMouseUp = imgPoza1MouseUp
   end
   object imgPoza2: TImage
-    Left = 108
-    Top = 359
+    Left = 102
+    Top = 352
     Width = 70
     Height = 70
     Cursor = crHandPoint
@@ -2967,12 +2964,10 @@ object frmAp: TfrmAp
       7BDFBAF75EF7EEBDD7BDFBAF75EF7EEBDD7BDFBAF75EF7EEBDD7BDFBAF75EF7E
       EBDD7FFFD9}
     Proportional = True
-    OnClick = imgPoza2Click
-    OnMouseUp = imgPoza1MouseUp
   end
   object imgPoza3: TImage
-    Left = 208
-    Top = 359
+    Left = 202
+    Top = 352
     Width = 70
     Height = 70
     Cursor = crHandPoint
@@ -4443,12 +4438,10 @@ object frmAp: TfrmAp
       7BDFBAF75EF7EEBDD7BDFBAF75EF7EEBDD7BDFBAF75EF7EEBDD7BDFBAF75EF7E
       EBDD7FFFD9}
     Proportional = True
-    OnClick = imgPoza3Click
-    OnMouseUp = imgPoza1MouseUp
   end
   object imgPoza4: TImage
-    Left = 308
-    Top = 359
+    Left = 302
+    Top = 352
     Width = 70
     Height = 70
     Cursor = crHandPoint
@@ -5919,26 +5912,24 @@ object frmAp: TfrmAp
       7BDFBAF75EF7EEBDD7BDFBAF75EF7EEBDD7BDFBAF75EF7EEBDD7BDFBAF75EF7E
       EBDD7FFFD9}
     Proportional = True
-    OnClick = imgPoza4Click
-    OnMouseUp = imgPoza1MouseUp
   end
   object Label7: TLabel
-    Left = 396
-    Top = 359
+    Left = 390
+    Top = 352
     Width = 88
     Height = 13
     Caption = 'Ultima modificare: '
   end
   object Label8: TLabel
-    Left = 486
-    Top = 360
+    Left = 480
+    Top = 353
     Width = 31
     Height = 13
     Caption = 'Label8'
   end
   object imgFaraPoza: TImage
-    Left = 327
-    Top = 139
+    Left = 321
+    Top = 132
     Width = 70
     Height = 70
     Cursor = crHandPoint
@@ -7412,8 +7403,8 @@ object frmAp: TfrmAp
     Visible = False
   end
   object rgMobilat: TRadioGroup
-    Left = 444
-    Top = 223
+    Left = 438
+    Top = 216
     Width = 106
     Height = 65
     Caption = 'Mobilat'
@@ -7421,38 +7412,31 @@ object frmAp: TfrmAp
       'Mobilat'
       'Semimobilat'
       'Nemobilat')
-    TabOrder = 3
+    TabOrder = 0
   end
   object btnSalveaza: TButton
-    Left = 475
-    Top = 408
+    Left = 469
+    Top = 401
     Width = 75
     Height = 25
     Caption = '&Salveaza'
     Default = True
-    TabOrder = 0
+    TabOrder = 1
     OnClick = btnSalveazaClick
   end
   object GroupBox1: TGroupBox
-    Left = 8
-    Top = 8
+    Left = 2
+    Top = 1
     Width = 434
     Height = 209
     Caption = 'Informatii apartament'
-    TabOrder = 1
+    TabOrder = 2
     object Label1: TLabel
       Left = 202
       Top = 88
       Width = 27
       Height = 13
       Caption = 'Altele'
-    end
-    object Label2: TLabel
-      Left = 324
-      Top = 49
-      Width = 64
-      Height = 13
-      Caption = 'Data expirarii'
     end
     object Label4: TLabel
       Left = 341
@@ -7461,16 +7445,9 @@ object frmAp: TfrmAp
       Height = 13
       Caption = 'Moneda'
     end
-    object Label5: TLabel
-      Left = 202
-      Top = 49
-      Width = 60
-      Height = 13
-      Caption = 'Decomandat'
-    end
     object Label6: TLabel
       Left = 8
-      Top = 126
+      Top = 163
       Width = 69
       Height = 13
       Caption = 'Numar camere'
@@ -7496,41 +7473,24 @@ object frmAp: TfrmAp
       Height = 13
       Caption = 'Localitate'
     end
-    object txtBloc: TLabeledEdit
+    object Label2: TLabel
+      Left = 100
+      Top = 163
+      Width = 64
+      Height = 13
+      Caption = 'Data expirarii'
+    end
+    object txtStrada: TLabeledEdit
       Left = 8
-      Top = 180
-      Width = 79
+      Top = 140
+      Width = 153
       Height = 21
-      EditLabel.Width = 19
+      EditLabel.Width = 32
       EditLabel.Height = 13
-      EditLabel.Caption = 'Bloc'
+      EditLabel.Caption = 'Strada'
       MaxLength = 255
       TabOrder = 1
       Text = '3'
-    end
-    object txtAp: TLabeledEdit
-      Left = 90
-      Top = 180
-      Width = 60
-      Height = 21
-      EditLabel.Width = 57
-      EditLabel.Height = 13
-      EditLabel.Caption = 'Apartament'
-      MaxLength = 255
-      TabOrder = 3
-      Text = '4'
-    end
-    object txtEtaj: TLabeledEdit
-      Left = 153
-      Top = 180
-      Width = 45
-      Height = 21
-      EditLabel.Width = 19
-      EditLabel.Height = 13
-      EditLabel.Caption = 'Etaj'
-      MaxLength = 255
-      TabOrder = 4
-      Text = '5'
     end
     object txtGs: TLabeledEdit
       Left = 202
@@ -7541,7 +7501,7 @@ object frmAp: TfrmAp
       EditLabel.Height = 13
       EditLabel.Caption = 'Grup sanitar'
       MaxLength = 10
-      TabOrder = 5
+      TabOrder = 3
       Text = '8'
       OnKeyPress = txtGsKeyPress
     end
@@ -7554,7 +7514,7 @@ object frmAp: TfrmAp
       EditLabel.Height = 13
       EditLabel.Caption = 'Pret'
       MaxLength = 10
-      TabOrder = 6
+      TabOrder = 4
       Text = '6'
       OnKeyPress = txtGsKeyPress
     end
@@ -7567,7 +7527,7 @@ object frmAp: TfrmAp
         '21'
         '34'
         '54')
-      TabOrder = 7
+      TabOrder = 5
     end
     object txtMoneda: TComboBox
       Left = 341
@@ -7575,39 +7535,28 @@ object frmAp: TfrmAp
       Width = 86
       Height = 21
       Style = csDropDownList
-      TabOrder = 8
+      TabOrder = 6
       Items.Strings = (
         'RON'
         'EUR'
         'USD')
     end
-    object txtDsc: TComboBox
-      Left = 202
-      Top = 66
-      Width = 116
-      Height = 21
-      Style = csDropDownList
-      TabOrder = 9
-      Items.Strings = (
-        'Decomandat'
-        'Semidecomandat'
-        'Nedecomandat'
-        'Circular')
-    end
     object txtNrcam: TComboBox
       Left = 8
-      Top = 141
-      Width = 153
+      Top = 178
+      Width = 89
       Height = 21
       Style = csDropDownList
-      TabOrder = 10
+      TabOrder = 7
       Items.Strings = (
-        'Garsoniera'
         '1'
         '2'
         '3'
         '4'
-        '5')
+        '5'
+        '6'
+        '7'
+        '8')
     end
     object txtZona: TComboBox
       Left = 8
@@ -7669,7 +7618,7 @@ object frmAp: TfrmAp
       Height = 21
       Style = csDropDownList
       DropDownCount = 20
-      TabOrder = 11
+      TabOrder = 8
       OnChange = txtLocalitateChange
     end
     object btnLocalitate: TButton
@@ -7678,7 +7627,7 @@ object frmAp: TfrmAp
       Width = 29
       Height = 21
       Caption = '+'
-      TabOrder = 12
+      TabOrder = 9
       OnClick = btnLocalitateClick
     end
     object btnZona: TButton
@@ -7687,17 +7636,50 @@ object frmAp: TfrmAp
       Width = 29
       Height = 21
       Caption = '+'
-      TabOrder = 13
+      TabOrder = 10
       OnClick = btnZonaClick
+    end
+    object txtSpTeren: TLabeledEdit
+      Left = 202
+      Top = 66
+      Width = 104
+      Height = 21
+      EditLabel.Width = 77
+      EditLabel.Height = 13
+      EditLabel.Caption = 'Suprafata teren'
+      MaxLength = 255
+      TabOrder = 11
+      Text = '3'
+    end
+    object txtSpConstruita: TLabeledEdit
+      Left = 311
+      Top = 66
+      Width = 116
+      Height = 21
+      EditLabel.Width = 99
+      EditLabel.Height = 13
+      EditLabel.Caption = 'Suprafata construita'
+      MaxLength = 255
+      TabOrder = 12
+      Text = '3'
+    end
+    object txtDataExpirarii: TDateTimePicker
+      Left = 100
+      Top = 178
+      Width = 96
+      Height = 21
+      Date = 40284.850948078700000000
+      Time = 40284.850948078700000000
+      TabOrder = 13
     end
   end
   object GroupBox2: TGroupBox
-    Left = 446
-    Top = 8
+    Left = 440
+    Top = 1
     Width = 106
     Height = 209
     Caption = 'Imbunatatiri'
-    TabOrder = 2
+    TabOrder = 3
     object CheckListBox1: TCheckListBox
       AlignWithMargins = True
       Left = 5
@@ -7718,30 +7700,21 @@ object frmAp: TfrmAp
         'Usa metalica'
         'Centrala termica'
         'Aer conditionat'
-        'Apometre'
-        'Repartitoare'
         'Boiler'
-        'Contor gaz')
+        'Gaze'
+        'Apa'
+        'Canalizare')
       ParentColor = True
       TabOrder = 0
     end
   end
-  object txtDataExpirarii: TDateTimePicker
-    Left = 332
-    Top = 74
-    Width = 103
-    Height = 21
-    Date = 40284.850948078700000000
-    Time = 40284.850948078700000000
-    TabOrder = 4
-  end
   object GroupBox3: TGroupBox
-    Left = 8
-    Top = 223
+    Left = 2
+    Top = 216
     Width = 434
     Height = 130
     Caption = 'Informatii proprietar'
-    TabOrder = 5
+    TabOrder = 4
     object Label3: TLabel
       Left = 8
       Top = 55
@@ -7780,27 +7753,27 @@ object frmAp: TfrmAp
     end
   end
   object btnStergeTot: TButton
-    Left = 396
-    Top = 377
+    Left = 390
+    Top = 370
     Width = 75
     Height = 25
     Caption = 'S&terge tot'
-    TabOrder = 6
+    TabOrder = 5
     OnClick = btnStergeTotClick
   end
   object btnRenunta: TButton
-    Left = 396
-    Top = 408
+    Left = 390
+    Top = 401
     Width = 75
     Height = 25
     Cancel = True
     Caption = '&Renunta'
-    TabOrder = 7
+    TabOrder = 6
     OnClick = btnRenuntaClick
   end
   object rgUtilat: TRadioGroup
-    Left = 443
-    Top = 288
+    Left = 437
+    Top = 281
     Width = 106
     Height = 65
     Caption = 'Utilat'
@@ -7808,26 +7781,26 @@ object frmAp: TfrmAp
       'Utilat'
       'Semiutilat'
       'Neutilat')
-    TabOrder = 8
+    TabOrder = 7
   end
   object btnInchiriat: TBitBtnWithColor
-    Left = 475
-    Top = 377
+    Left = 469
+    Top = 370
     Width = 75
     Height = 25
     Caption = 'Inchiriat'
-    TabOrder = 9
+    TabOrder = 8
     OnClick = btnInchiriatClick
     Color = clBtnFace
   end
   object SQL: TUpdateSQL
-    Left = 272
-    Top = 304
+    Left = 266
+    Top = 297
   end
   object OpenPictureDialog1: TOpenPictureDialog
     Title = 'Selectati poza'
-    Left = 208
-    Top = 304
+    Left = 202
+    Top = 297
   end
   object getID: TQuery
     DatabaseName = 'baza_data'
@@ -7835,11 +7808,11 @@ object frmAp: TfrmAp
       
         'select auto_increment from information_schema.TABLES where TABLE' +
         '_NAME='#39'apartamente'#39' ;')
-    Left = 312
-    Top = 304
+    Left = 306
+    Top = 297
   end
   object insertQuery: TUpdateSQL
-    Left = 360
-    Top = 304
+    Left = 354
+    Top = 297
   end
 end

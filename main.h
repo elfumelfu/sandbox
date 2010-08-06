@@ -154,6 +154,7 @@ __published: // IDE-managed Components
 	TButton *btnAlertaSalveaza;
 	TButton *btnAlertaStergeTot;
 	TTimer *timerAlerta;
+	TMenuItem *Case1;
 
 	void __fastcall DatabaseAfterConnect(TObject *Sender);
 	void __fastcall Iesier1Click(TObject *Sender);
@@ -208,6 +209,7 @@ __published: // IDE-managed Components
 	void __fastcall timerAlertaTimer(TObject *Sender);
 	void __fastcall StatusBarDrawPanel(TStatusBar *StatusBar, TStatusPanel *Panel, const TRect &Rect);
 	void __fastcall FormResize(TObject *Sender);
+	void __fastcall Case1Click(TObject *Sender);
 
 private: // User declarations
 public: // User declarations

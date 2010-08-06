@@ -2204,6 +2204,10 @@ object frmMain: TfrmMain
         Caption = 'Apar&tamente'
         OnClick = Adauga1Click
       end
+      object Case1: TMenuItem
+        Caption = '&Case'
+        OnClick = Case1Click
+      end
     end
     object AdaugaClienti1: TMenuItem
       Caption = 'A&dauga Clienti'

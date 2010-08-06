@@ -552,11 +552,5 @@ frmMain->ComboList(txtZona, "den", "zone", false, (" where localitate = (SELECT 
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TfrmAp::txtDataExpirariiChange(TObject *Sender)
-{
-UnicodeString crap;
-InputBox("cacat", "pansat", crap);
-}
-//---------------------------------------------------------------------------
 
 
