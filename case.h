@@ -76,6 +76,7 @@ __published:	// IDE-managed Components
 	void __fastcall btnLocalitateClick(TObject *Sender);
 	void __fastcall btnZonaClick(TObject *Sender);
 	void __fastcall btnSalveazaClick(TObject *Sender);
+	void __fastcall txtSpTerenKeyPress(TObject *Sender, wchar_t &Key);
 private:	// User declarations
 public:		// User declarations
 	__fastcall TfrmCase(TComponent* Owner);

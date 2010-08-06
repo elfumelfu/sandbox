@@ -42,6 +42,8 @@ txtStrada->Text= "";
 txtPret->Text= "";
 txtMoneda->ItemIndex=-1;
 txtGs->Text= "";
+txtSpTeren->Text= "";
+txtSpConstruita->Text= "";
 memAltele->Lines->Clear();
 CheckListBox1->CheckAll(cbUnchecked, False, False);
 rgMobilat->ItemIndex=-1;
@@ -100,6 +102,8 @@ if (frmCase->operatie == "mod")
 	txtLocalitateChange(Sender);
 	txtZona->ItemIndex=txtZona->Items->IndexOf(frmMain->sqlSelect->FieldByName("zona")->AsAnsiString);
 	txtStrada->Text= frmMain->sqlSelect->FieldByName("strada")->AsAnsiString;
+	txtSpTeren->Text= frmMain->sqlSelect->FieldByName("st")->AsAnsiString;
+	txtSpConstruita->Text= frmMain->sqlSelect->FieldByName("sc")->AsAnsiString;
 	txtPret->Text= frmMain->sqlSelect->FieldByName("pret")->AsAnsiString;
 	if (txtPret->Text == "0") {
 		txtPret->Text = "";
@@ -403,7 +407,7 @@ else
 SQL->InsertSQL->Text = "INSERT INTO casa (judet, localitate, nrcam, zona, \
 		strada, pret, moneda, grupsanitar, data, data_modificarii, data_expirarii, \
 		altele, balcon, gresie, faianta, termopan,parchet,um,ct,ac,apa,canalizare, \
-		mobilat, utilat, nume, telefon, info_prop, boiler, gaze, inchiriat ) VALUES ( " \
+		mobilat, utilat, nume, telefon, info_prop, boiler, gaze, st, sc, inchiriat  ) VALUES ( " \
 		"'" +
 		txtJudet->Text + "', '" +
 		txtLocalitate->Text +"','" +
@@ -434,6 +438,8 @@ SQL->InsertSQL->Text = "INSERT INTO casa (judet, localitate, nrcam, zona, \
 		memInfo->Text + "'," +
 		boiler + "," +
 		gaze + "," +
+		txtSpTeren->Text + "," +
+		txtSpConstruita->Text + "," +
 		IntToStr(inchiriat) + ")";
 
 		//TODO update judet, localitate,
@@ -466,7 +472,9 @@ SQL->ModifySQL->Text = "UPDATE casa SET  \
 		"nume = '" + txtNume->Text + "'," +
 		"telefon = '" + txtTel->Text + "'," +
 		"info_prop = '" + memInfo->Text + "', " +
-		"inchiriat = " + IntToStr(inchiriat) + " " +
+		"inchiriat = " + IntToStr(inchiriat) + ", " +
+		"st = " + txtSpTeren->Text + ", " +
+		"sc = " + txtSpConstruita->Text + ", " +
 	  /*	"poza1 = '" + poza1 + "', " +
 		"poza2 = '" + poza2 + "', " +
 		"poza3 = '" + poza3 + "', " +
@@ -498,6 +506,16 @@ frmMain->Query1->Close();
 frmMain->Query1->Open();
 frmMain->update = 1;
 frmCase->Close();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TfrmCase::txtSpTerenKeyPress(TObject *Sender, wchar_t &Key)
+{
+if( !((int)Key >= 48 && (int)Key<=57) && Key != VK_BACK &&
+	 ( Key == '.' &&
+	 ( (((TLabeledEdit *)Sender)->Text.Pos('.')>0) ||
+	   (((TLabeledEdit *)Sender)->Text.Length()==0) )) )
+	Key = 0;
 }
 //---------------------------------------------------------------------------
 

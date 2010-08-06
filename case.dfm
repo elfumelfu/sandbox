@@ -7650,6 +7650,7 @@ object frmCase: TfrmCase
       MaxLength = 255
       TabOrder = 11
       Text = '3'
+      OnKeyPress = txtSpTerenKeyPress
     end
     object txtSpConstruita: TLabeledEdit
       Left = 311
@@ -7662,6 +7663,7 @@ object frmCase: TfrmCase
       MaxLength = 255
       TabOrder = 12
       Text = '3'
+      OnKeyPress = txtSpTerenKeyPress
     end
     object txtDataExpirarii: TDateTimePicker
       Left = 100
