@@ -11,6 +11,7 @@
 #pragma link "JvNetscapeSplitter"
 #pragma link "JvCaptionPanel"
 #pragma link "JvExtComponent"
+#pragma link "JvDBImage"
 #pragma resource "*.dfm"
 
 #include <IniFiles.hpp>
@@ -240,6 +241,7 @@ void __fastcall TfrmMain::DatabaseAfterConnect(TObject *Sender) {
         timerAlerta->Enabled=true;
 	}
 	sqlSelect->Close();
+    //ADOConnection1->Connected = true;
 }
 // ---------------------------------------------------------------------------
 
@@ -329,6 +331,11 @@ void __fastcall TfrmMain::DBGrid1DblClick(TObject *Sender) {
 		frmAp->operatie = "mod";
 		frmAp->id = DBGrid1->SelectedField->DataSet->FieldByName("id")
 			->AsInteger;
+
+        /*Get pictures*/
+	   /*	ADOQuery1->Close();
+		ADOQuery1->SQL->Text = "SELECT poza1 from apartamente where id="+ IntToStr(frmAp->id );
+		 ADOQuery1->Open();   */
 		frmAp->ShowModal();
 		return;
 	}
@@ -632,6 +639,10 @@ void __fastcall TfrmMain::DBGrid1DrawColumnCell
 
 	if (Column->Field->DataSet->FieldByName("inchiriat")->AsInteger == 1)
 		DBGrid1->Canvas->Brush->Color = clYellow;
+
+	if (tabela == "apartamente")
+		if (Column->Field->DataSet->FieldByName("onsite")->AsInteger == 1)
+			DBGrid1->Canvas->Brush->Color = clSkyBlue;
 
 	if (State.Contains(gdSelected)) {
 		DBGrid1->Canvas->Brush->Color = clNavy;
@@ -1349,6 +1360,23 @@ void __fastcall TfrmMain::Case1Click(TObject *Sender)
 {
 frmCase->operatie = "add";
 frmCase->ShowModal();
+}
+//---------------------------------------------------------------------------
+
+
+void __fastcall TfrmMain::Punepesite1Click(TObject *Sender)
+{
+UnicodeString selectedId;
+qrySite->DatabaseName=dbSite->DatabaseName;
+selectedId = Trim(DBGrid1->SelectedField->DataSet->FieldByName("id")->AsString);
+qrySite->SQL->Text="INSERT INTO apartamente (id, nrcam) VALUES ( 'chirie_" +
+	selectedId + "','2')";
+qrySite->ExecSQL();
+
+qrySite->DatabaseName=Database->DatabaseName;
+qrySite->SQL->Text="UPDATE apartamente SET onsite = 1 WHERE id =" +
+	selectedId;
+qrySite->ExecSQL();
 }
 //---------------------------------------------------------------------------
 

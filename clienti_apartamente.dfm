@@ -200,6 +200,7 @@ object frmClientiAp: TfrmClientiAp
       Width = 87
       Height = 21
       Style = csDropDownList
+      ItemHeight = 13
       TabOrder = 2
       Items.Strings = (
         'RON'
@@ -212,6 +213,7 @@ object frmClientiAp: TfrmClientiAp
       Width = 199
       Height = 21
       Style = csDropDownList
+      ItemHeight = 13
       TabOrder = 3
       Items.Strings = (
         'Decomandat'
@@ -226,6 +228,7 @@ object frmClientiAp: TfrmClientiAp
       Height = 21
       Style = csDropDownList
       DropDownCount = 20
+      ItemHeight = 0
       TabOrder = 0
       OnChange = txtJudetChange
     end
@@ -236,6 +239,7 @@ object frmClientiAp: TfrmClientiAp
       Height = 21
       Style = csDropDownList
       DropDownCount = 20
+      ItemHeight = 0
       TabOrder = 4
       OnChange = txtLocalitateChange
     end

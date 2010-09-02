@@ -32,6 +32,9 @@ frmMain->Database->Params->Add("PASSWORD="+Trim((txtParola->Text)));
 try
 	{
 	frmMain->Database->Open();
+	frmMain->dbSite->Params->Add("USER NAME=chirie");
+	frmMain->dbSite->Params->Add("PASSWORD=NAhaQ94lMIHC");
+	frmMain->dbSite->Open();
 	frmLogin->Close();
 	}
 catch (Exception &exception)

@@ -2,7 +2,7 @@ object frmMain: TfrmMain
   Left = 0
   Top = 0
   Caption = 'se-inchiriaza.ro'
-  ClientHeight = 548
+  ClientHeight = 605
   ClientWidth = 989
   Color = clBtnFace
   DefaultMonitor = dmMainForm
@@ -301,7 +301,7 @@ object frmMain: TfrmMain
   object Splitter1: TSplitter
     Left = 134
     Top = 35
-    Height = 494
+    Height = 551
     Visible = False
     ExplicitLeft = 182
     ExplicitTop = 29
@@ -310,7 +310,7 @@ object frmMain: TfrmMain
   object JvNetscapeSplitter1: TJvNetscapeSplitter
     Left = 794
     Top = 35
-    Height = 494
+    Height = 551
     Align = alRight
     MinSize = 1
     Maximized = False
@@ -323,7 +323,7 @@ object frmMain: TfrmMain
   end
   object StatusBar: TStatusBar
     Left = 0
-    Top = 529
+    Top = 586
     Width = 989
     Height = 19
     Panels = <
@@ -340,7 +340,7 @@ object frmMain: TfrmMain
     Left = 137
     Top = 35
     Width = 657
-    Height = 494
+    Height = 551
     Align = alClient
     Alignment = taLeftJustify
     Caption = 'Introduceti textul dorit'
@@ -349,12 +349,12 @@ object frmMain: TfrmMain
     Visible = False
     DesignSize = (
       657
-      494)
+      551)
     object ListView1: TListView
       Left = 1
       Top = 51
       Width = 655
-      Height = 442
+      Height = 499
       Align = alBottom
       Anchors = [akLeft, akTop, akRight, akBottom]
       Columns = <
@@ -407,14 +407,14 @@ object frmMain: TfrmMain
     Left = 137
     Top = 35
     Width = 657
-    Height = 494
+    Height = 551
     Align = alClient
     Alignment = taLeftJustify
     Caption = 'panMain'
     TabOrder = 1
     object JvNetscapeSplitter2: TJvNetscapeSplitter
       Left = 1
-      Top = 298
+      Top = 355
       Width = 655
       Height = 10
       Cursor = crVSplit
@@ -431,11 +431,10 @@ object frmMain: TfrmMain
       Left = 1
       Top = 57
       Width = 655
-      Height = 241
+      Height = 298
       Align = alClient
       DataSource = DataSource1
-      DrawingStyle = gdsGradient
-      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit]
       TabOrder = 0
       TitleFont.Charset = DEFAULT_CHARSET
       TitleFont.Color = clWindowText
@@ -726,6 +725,7 @@ object frmMain: TfrmMain
           Width = 76
           Height = 21
           Style = csDropDownList
+          ItemHeight = 13
           TabOrder = 0
           OnChange = cbNrCamChange
         end
@@ -735,6 +735,7 @@ object frmMain: TfrmMain
           Width = 90
           Height = 21
           Style = csDropDownList
+          ItemHeight = 13
           TabOrder = 1
           OnChange = cbNrCamChange
         end
@@ -744,6 +745,7 @@ object frmMain: TfrmMain
           Width = 90
           Height = 21
           Style = csDropDownList
+          ItemHeight = 13
           TabOrder = 2
           OnChange = cbNrCamChange
         end
@@ -753,6 +755,7 @@ object frmMain: TfrmMain
           Width = 66
           Height = 21
           Style = csDropDownList
+          ItemHeight = 13
           TabOrder = 3
           OnChange = cbNrCamChange
         end
@@ -762,6 +765,7 @@ object frmMain: TfrmMain
           Width = 82
           Height = 21
           Style = csDropDownList
+          ItemHeight = 13
           TabOrder = 4
           OnChange = cbNrCamChange
         end
@@ -771,6 +775,7 @@ object frmMain: TfrmMain
           Width = 58
           Height = 21
           Style = csDropDownList
+          ItemHeight = 13
           TabOrder = 5
           OnChange = cbNrCamChange
         end
@@ -780,6 +785,7 @@ object frmMain: TfrmMain
           Width = 82
           Height = 21
           Style = csDropDownList
+          ItemHeight = 13
           TabOrder = 6
           OnChange = cbNrCamChange
         end
@@ -789,6 +795,7 @@ object frmMain: TfrmMain
           Width = 82
           Height = 21
           Style = csDropDownList
+          ItemHeight = 13
           TabOrder = 7
           OnChange = cbNrCamChange
         end
@@ -915,6 +922,7 @@ object frmMain: TfrmMain
           Width = 76
           Height = 21
           Style = csDropDownList
+          ItemHeight = 13
           ItemIndex = 0
           TabOrder = 0
           Text = 'All'
@@ -935,6 +943,7 @@ object frmMain: TfrmMain
           Height = 21
           Style = csDropDownList
           DropDownCount = 25
+          ItemHeight = 13
           TabOrder = 1
           OnChange = cbNrCamChange
         end
@@ -944,6 +953,7 @@ object frmMain: TfrmMain
           Width = 90
           Height = 21
           Style = csDropDownList
+          ItemHeight = 13
           TabOrder = 2
           OnChange = cbNrCamChange
         end
@@ -953,6 +963,7 @@ object frmMain: TfrmMain
           Width = 58
           Height = 21
           Style = csDropDownList
+          ItemHeight = 13
           TabOrder = 3
           OnChange = cbNrCamChange
         end
@@ -963,6 +974,7 @@ object frmMain: TfrmMain
           Height = 21
           Style = csDropDownList
           DropDownCount = 25
+          ItemHeight = 13
           TabOrder = 4
           OnChange = cbNrCamChange
         end
@@ -972,6 +984,7 @@ object frmMain: TfrmMain
           Width = 82
           Height = 21
           Style = csDropDownList
+          ItemHeight = 13
           ItemIndex = 0
           TabOrder = 5
           Text = 'All'
@@ -988,6 +1001,7 @@ object frmMain: TfrmMain
           Width = 74
           Height = 21
           Style = csDropDownList
+          ItemHeight = 13
           ItemIndex = 0
           TabOrder = 6
           Text = 'All'
@@ -1005,6 +1019,7 @@ object frmMain: TfrmMain
           Height = 21
           Style = csDropDownList
           DropDownCount = 25
+          ItemHeight = 13
           TabOrder = 7
           OnChange = cbNrCamChange
         end
@@ -1015,6 +1030,7 @@ object frmMain: TfrmMain
           Height = 21
           Style = csDropDownList
           DropDownCount = 25
+          ItemHeight = 13
           TabOrder = 8
           OnChange = cbNrCamChange
         end
@@ -1025,6 +1041,7 @@ object frmMain: TfrmMain
           Height = 21
           Style = csDropDownList
           DropDownCount = 25
+          ItemHeight = 13
           TabOrder = 9
           OnChange = cbNrCamChange
         end
@@ -1054,13 +1071,11 @@ object frmMain: TfrmMain
     end
     object DBGridClienti: TDBGrid
       Left = 1
-      Top = 308
+      Top = 365
       Width = 655
       Height = 185
       Align = alBottom
       DataSource = DataSource2
-      DrawingStyle = gdsGradient
-      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
       TabOrder = 2
       TitleFont.Charset = DEFAULT_CHARSET
       TitleFont.Color = clWindowText
@@ -1298,13 +1313,13 @@ object frmMain: TfrmMain
     Left = 0
     Top = 35
     Width = 134
-    Height = 494
+    Height = 551
     Align = alLeft
     Caption = 'panStanga'
     TabOrder = 4
     object imgSigla: TImage
       Left = 1
-      Top = 360
+      Top = 417
       Width = 132
       Height = 133
       Cursor = crHandPoint
@@ -1986,7 +2001,7 @@ object frmMain: TfrmMain
       Left = 1
       Top = 1
       Width = 132
-      Height = 359
+      Height = 416
       Align = alClient
       HideSelection = False
       Indent = 19
@@ -2011,7 +2026,7 @@ object frmMain: TfrmMain
     Left = 804
     Top = 35
     Width = 185
-    Height = 494
+    Height = 551
     Align = alRight
     BevelOuter = bvNone
     TabOrder = 5
@@ -2019,7 +2034,7 @@ object frmMain: TfrmMain
       Left = 0
       Top = 0
       Width = 185
-      Height = 494
+      Height = 551
       Align = alClient
       Buttons = [capClose]
       BorderStyle = bsNone
@@ -2035,7 +2050,7 @@ object frmMain: TfrmMain
       OnButtonClick = JvCaptionPanel1ButtonClick
       DesignSize = (
         185
-        494)
+        551)
       object DateTimePicker1: TDateTimePicker
         Left = 6
         Top = 36
@@ -2133,7 +2148,7 @@ object frmMain: TfrmMain
         Left = 6
         Top = 317
         Width = 175
-        Height = 148
+        Height = 205
         Anchors = [akLeft, akTop, akBottom]
         Caption = 'Detalii'
         TabOrder = 3
@@ -2141,14 +2156,14 @@ object frmMain: TfrmMain
           Left = 2
           Top = 15
           Width = 171
-          Height = 131
+          Height = 188
           Align = alClient
           TabOrder = 0
         end
       end
       object btnAlertaSalveaza: TButton
         Left = 104
-        Top = 467
+        Top = 524
         Width = 75
         Height = 25
         Anchors = [akLeft, akBottom]
@@ -2158,7 +2173,7 @@ object frmMain: TfrmMain
       end
       object btnAlertaStergeTot: TButton
         Left = 6
-        Top = 467
+        Top = 524
         Width = 75
         Height = 25
         Anchors = [akLeft, akBottom]
@@ -2264,6 +2279,13 @@ object frmMain: TfrmMain
       Caption = 'Detalii'
       OnClick = Detalii1Click
     end
+    object Punepesite1: TMenuItem
+      Caption = 'Adauga pe site'
+      OnClick = Punepesite1Click
+    end
+    object N3: TMenuItem
+      Caption = '-'
+    end
     object Sterge1: TMenuItem
       Caption = 'Sterge'
       OnClick = Sterge1Click
@@ -2288,5 +2310,25 @@ object frmMain: TfrmMain
     OnTimer = timerAlertaTimer
     Left = 192
     Top = 200
+  end
+  object dbSite: TDatabase
+    AliasName = 'baza_date_site'
+    DatabaseName = 'chirie_imobiliare'
+    LoginPrompt = False
+    Params.Strings = (
+      '')
+    SessionName = 'Default'
+    AfterConnect = DatabaseAfterConnect
+    Left = 280
+    Top = 144
+  end
+  object qrySite: TQuery
+    BeforeOpen = Query1BeforeOpen
+    AfterOpen = Query1AfterOpen
+    DatabaseName = 'baza_date_site'
+    SQL.Strings = (
+      'SELECT * FROM apartamente')
+    Left = 320
+    Top = 144
   end
 end

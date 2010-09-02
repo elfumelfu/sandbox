@@ -5,7 +5,7 @@ object frmCase: TfrmCase
   BorderStyle = bsSingle
   Caption = 'Adaugare case'
   ClientHeight = 428
-  ClientWidth = 545
+  ClientWidth = 553
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -7406,7 +7406,7 @@ object frmCase: TfrmCase
   object rgMobilat: TRadioGroup
     Left = 438
     Top = 216
-    Width = 106
+    Width = 109
     Height = 65
     Caption = 'Mobilat'
     Items.Strings = (
@@ -7416,7 +7416,7 @@ object frmCase: TfrmCase
     TabOrder = 0
   end
   object btnSalveaza: TButton
-    Left = 469
+    Left = 472
     Top = 401
     Width = 75
     Height = 25
@@ -7536,6 +7536,7 @@ object frmCase: TfrmCase
       Width = 86
       Height = 21
       Style = csDropDownList
+      ItemHeight = 13
       TabOrder = 6
       Items.Strings = (
         'RON'
@@ -7548,6 +7549,7 @@ object frmCase: TfrmCase
       Width = 89
       Height = 21
       Style = csDropDownList
+      ItemHeight = 13
       TabOrder = 7
       Items.Strings = (
         '1'
@@ -7566,6 +7568,7 @@ object frmCase: TfrmCase
       Height = 21
       Style = csDropDownList
       DropDownCount = 20
+      ItemHeight = 13
       Sorted = True
       TabOrder = 2
       Items.Strings = (
@@ -7609,6 +7612,7 @@ object frmCase: TfrmCase
       Height = 21
       Style = csDropDownList
       DropDownCount = 20
+      ItemHeight = 13
       TabOrder = 0
       OnChange = txtJudetChange
     end
@@ -7619,6 +7623,7 @@ object frmCase: TfrmCase
       Height = 21
       Style = csDropDownList
       DropDownCount = 20
+      ItemHeight = 13
       TabOrder = 8
       OnChange = txtLocalitateChange
     end
@@ -7679,15 +7684,15 @@ object frmCase: TfrmCase
   object GroupBox2: TGroupBox
     Left = 440
     Top = 1
-    Width = 106
+    Width = 107
     Height = 209
     Caption = 'Imbunatatiri'
     TabOrder = 3
-    object CheckListBox1: TCheckListBox
+    object CheckListBox1: TJvCheckListBox
       AlignWithMargins = True
       Left = 5
       Top = 18
-      Width = 96
+      Width = 97
       Height = 186
       Align = alClient
       BevelInner = bvNone
@@ -7703,12 +7708,17 @@ object frmCase: TfrmCase
         'Usa metalica'
         'Centrala termica'
         'Aer conditionat'
+        'Apometre'
+        'Repartitoare'
         'Boiler'
-        'Gaze'
-        'Apa'
-        'Canalizare')
+        'Contor gaz')
       ParentColor = True
+      ScrollWidth = 97
       TabOrder = 0
+      ExplicitLeft = 3
+      ExplicitTop = 49
+      ExplicitWidth = 121
+      ExplicitHeight = 113
     end
   end
   object GroupBox3: TGroupBox
@@ -7777,7 +7787,7 @@ object frmCase: TfrmCase
   object rgUtilat: TRadioGroup
     Left = 437
     Top = 281
-    Width = 106
+    Width = 110
     Height = 65
     Caption = 'Utilat'
     Items.Strings = (
@@ -7787,7 +7797,7 @@ object frmCase: TfrmCase
     TabOrder = 7
   end
   object btnInchiriat: TBitBtnWithColor
-    Left = 469
+    Left = 472
     Top = 370
     Width = 75
     Height = 25

@@ -26,7 +26,10 @@
 #include "JvNetscapeSplitter.hpp"
 #include "JvCaptionPanel.hpp"
 #include "JvExtComponent.hpp"
-#include "ButtonWithColor.hpp"
+#include "d:\\Proiecte\\componente\\buttonwithcolor\\ButtonWithColor.hpp"
+#include "JvDBImage.hpp"
+#include <DBCtrls.hpp>
+#include <ADODB.hpp>
 
 
 #define SETARI_INI_FILE ExtractFilePath(Application->ExeName)+"setari.ini"
@@ -155,6 +158,10 @@ __published: // IDE-managed Components
 	TButton *btnAlertaStergeTot;
 	TTimer *timerAlerta;
 	TMenuItem *Case1;
+	TDatabase *dbSite;
+	TQuery *qrySite;
+	TMenuItem *N3;
+	TMenuItem *Punepesite1;
 
 	void __fastcall DatabaseAfterConnect(TObject *Sender);
 	void __fastcall Iesier1Click(TObject *Sender);
@@ -210,6 +217,7 @@ __published: // IDE-managed Components
 	void __fastcall StatusBarDrawPanel(TStatusBar *StatusBar, TStatusPanel *Panel, const TRect &Rect);
 	void __fastcall FormResize(TObject *Sender);
 	void __fastcall Case1Click(TObject *Sender);
+	void __fastcall Punepesite1Click(TObject *Sender);
 
 private: // User declarations
 public: // User declarations

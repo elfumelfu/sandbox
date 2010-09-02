@@ -11,7 +11,7 @@
 #include <ExtCtrls.hpp>
 #include <CheckLst.hpp>
 #include <ComCtrls.hpp>
-#include <Keyboard.hpp>
+//#include <Keyboard.hpp>
 #include <jpeg.hpp>
 #include <Dialogs.hpp>
 #include <ExtDlgs.hpp>
@@ -19,6 +19,8 @@
 #include <FMTBcd.hpp>
 #include <SqlExpr.hpp>
 #include "ButtonWithColor.hpp"
+#include "JvCheckListBox.hpp"
+#include "JvExCheckLst.hpp"
 //---------------------------------------------------------------------------
 class TfrmAp : public TForm
 {
@@ -31,7 +33,6 @@ __published:	// IDE-managed Components
 	TLabeledEdit *txtGs;
 	TLabeledEdit *txtPret;
 	TGroupBox *GroupBox2;
-	TCheckListBox *CheckListBox1;
 	TRadioGroup *rgMobilat;
 	TLabel *Label1;
 	TMemo *memAltele;
@@ -71,6 +72,7 @@ __published:	// IDE-managed Components
 	TUpdateSQL *insertQuery;
 	TButton *btnZona;
 	TBitBtnWithColor *btnInchiriat;
+	TJvCheckListBox *CheckListBox1;
 	void __fastcall btnSalveazaClick(TObject *Sender);
 	void __fastcall btnStergeTotClick(TObject *Sender);
 	void __fastcall btnRenuntaClick(TObject *Sender);

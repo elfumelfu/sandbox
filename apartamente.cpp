@@ -7,6 +7,8 @@
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma link "ButtonWithColor"
+#pragma link "JvCheckListBox"
+#pragma link "JvExCheckLst"
 #pragma resource "*.dfm"
 
 #include "main.h"
@@ -102,6 +104,8 @@ else
 
 	if (poza1 != NULL)
 		{
+		poza1 = " LOAD_FILE ('" + poza1 + "') ";
+		/*
 		if (poza1 != imgPath+ ExtractFileName(poza1))
 			{
 			UnicodeString dest = imgPath+index + "_" + ExtractFileName(poza1);
@@ -109,11 +113,12 @@ else
 			poza1 = index + "_" + ExtractFileName(poza1);
 			}
 		else
-			poza1 = ExtractFileName(poza1);
+			poza1 = ExtractFileName(poza1);*/
 		}
 
 	if (poza2 != NULL)
 		{
+
 		if (poza2 != imgPath+ ExtractFileName(poza2))
 			{
 			UnicodeString dest = imgPath+index + "_" + ExtractFileName(poza2);
@@ -187,8 +192,8 @@ SQL->InsertSQL->Text = "INSERT INTO apartamente (judet, localitate, nrcam, zona,
 		memInfo->Text + "'," +
 		boiler + "," +
 		contorgaz + "," +
-		IntToStr(inchiriat) + ", '" +
-		poza1+ "','" +
+		IntToStr(inchiriat) + ", " +
+		poza1+ ",'" +
 		poza2+ "','" +
 		poza3+ "','" +
 		poza4+ "')";
@@ -278,7 +283,7 @@ txtMoneda->ItemIndex=-1;
 txtGs->Text= "";
 txtDsc->ItemIndex=-1;
 memAltele->Lines->Clear();
-CheckListBox1->CheckAll(cbUnchecked, False, False);
+CheckListBox1->UnCheckAll();
 rgMobilat->ItemIndex=-1;
 rgUtilat->ItemIndex=-1;
 txtNume->Text = "";
@@ -410,6 +415,8 @@ if (frmAp->operatie == "mod")
 	poza2=frmMain->sqlSelect->FieldByName("poza2")->AsString;
 	poza3=frmMain->sqlSelect->FieldByName("poza3")->AsString;
 	poza4=frmMain->sqlSelect->FieldByName("poza4")->AsString;
+
+
 
 	if (poza1 != NULL && FileExists(imgPath+poza1)) {
 		imgPoza1->Picture->LoadFromFile(imgPath+poza1);

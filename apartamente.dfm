@@ -7414,7 +7414,7 @@ object frmAp: TfrmAp
   object rgMobilat: TRadioGroup
     Left = 444
     Top = 223
-    Width = 106
+    Width = 109
     Height = 65
     Caption = 'Mobilat'
     Items.Strings = (
@@ -7426,7 +7426,7 @@ object frmAp: TfrmAp
   object btnSalveaza: TButton
     Left = 475
     Top = 408
-    Width = 75
+    Width = 78
     Height = 25
     Caption = '&Salveaza'
     Default = True
@@ -7575,6 +7575,7 @@ object frmAp: TfrmAp
       Width = 86
       Height = 21
       Style = csDropDownList
+      ItemHeight = 13
       TabOrder = 8
       Items.Strings = (
         'RON'
@@ -7587,6 +7588,7 @@ object frmAp: TfrmAp
       Width = 116
       Height = 21
       Style = csDropDownList
+      ItemHeight = 13
       TabOrder = 9
       Items.Strings = (
         'Decomandat'
@@ -7600,6 +7602,7 @@ object frmAp: TfrmAp
       Width = 153
       Height = 21
       Style = csDropDownList
+      ItemHeight = 13
       TabOrder = 10
       Items.Strings = (
         'Garsoniera'
@@ -7616,6 +7619,7 @@ object frmAp: TfrmAp
       Height = 21
       Style = csDropDownList
       DropDownCount = 20
+      ItemHeight = 13
       Sorted = True
       TabOrder = 2
       Items.Strings = (
@@ -7659,6 +7663,7 @@ object frmAp: TfrmAp
       Height = 21
       Style = csDropDownList
       DropDownCount = 20
+      ItemHeight = 13
       TabOrder = 0
       OnChange = txtJudetChange
     end
@@ -7669,6 +7674,7 @@ object frmAp: TfrmAp
       Height = 21
       Style = csDropDownList
       DropDownCount = 20
+      ItemHeight = 13
       TabOrder = 11
       OnChange = txtLocalitateChange
     end
@@ -7694,15 +7700,15 @@ object frmAp: TfrmAp
   object GroupBox2: TGroupBox
     Left = 446
     Top = 8
-    Width = 106
+    Width = 107
     Height = 209
     Caption = 'Imbunatatiri'
     TabOrder = 2
-    object CheckListBox1: TCheckListBox
+    object CheckListBox1: TJvCheckListBox
       AlignWithMargins = True
       Left = 5
       Top = 18
-      Width = 96
+      Width = 97
       Height = 186
       Align = alClient
       BevelInner = bvNone
@@ -7723,7 +7729,12 @@ object frmAp: TfrmAp
         'Boiler'
         'Contor gaz')
       ParentColor = True
+      ScrollWidth = 97
       TabOrder = 0
+      ExplicitLeft = 3
+      ExplicitTop = 49
+      ExplicitWidth = 121
+      ExplicitHeight = 113
     end
   end
   object txtDataExpirarii: TDateTimePicker
@@ -7801,7 +7812,7 @@ object frmAp: TfrmAp
   object rgUtilat: TRadioGroup
     Left = 443
     Top = 288
-    Width = 106
+    Width = 110
     Height = 65
     Caption = 'Utilat'
     Items.Strings = (
@@ -7813,7 +7824,7 @@ object frmAp: TfrmAp
   object btnInchiriat: TBitBtnWithColor
     Left = 475
     Top = 377
-    Width = 75
+    Width = 78
     Height = 25
     Caption = 'Inchiriat'
     TabOrder = 9

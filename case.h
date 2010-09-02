@@ -16,6 +16,8 @@
 #include <ExtCtrls.hpp>
 #include <ExtDlgs.hpp>
 #include <jpeg.hpp>
+#include "JvCheckListBox.hpp"
+#include "JvExCheckLst.hpp"
 //---------------------------------------------------------------------------
 class TfrmCase : public TForm
 {
@@ -48,7 +50,6 @@ __published:	// IDE-managed Components
 	TButton *btnLocalitate;
 	TButton *btnZona;
 	TGroupBox *GroupBox2;
-	TCheckListBox *CheckListBox1;
 	TGroupBox *GroupBox3;
 	TLabel *Label3;
 	TLabeledEdit *txtNume;
@@ -66,6 +67,7 @@ __published:	// IDE-managed Components
 	TLabeledEdit *txtSpConstruita;
 	TLabel *Label2;
 	TDateTimePicker *txtDataExpirarii;
+	TJvCheckListBox *CheckListBox1;
 	void __fastcall btnStergeTotClick(TObject *Sender);
 	void __fastcall btnRenuntaClick(TObject *Sender);
 	void __fastcall FormShow(TObject *Sender);

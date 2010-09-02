@@ -7,6 +7,8 @@
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma link "ButtonWithColor"
+#pragma link "JvCheckListBox"
+#pragma link "JvExCheckLst"
 #pragma resource "*.dfm"
 
 #include "main.h"
@@ -45,7 +47,7 @@ txtGs->Text= "";
 txtSpTeren->Text= "";
 txtSpConstruita->Text= "";
 memAltele->Lines->Clear();
-CheckListBox1->CheckAll(cbUnchecked, False, False);
+CheckListBox1->UnCheckAll();
 rgMobilat->ItemIndex=-1;
 rgUtilat->ItemIndex=-1;
 txtNume->Text = "";
