@@ -26,7 +26,7 @@
 #include "JvNetscapeSplitter.hpp"
 #include "JvCaptionPanel.hpp"
 #include "JvExtComponent.hpp"
-#include "d:\\Proiecte\\componente\\buttonwithcolor\\ButtonWithColor.hpp"
+#include "ButtonWithColor.hpp"
 #include "JvDBImage.hpp"
 #include <DBCtrls.hpp>
 #include <ADODB.hpp>

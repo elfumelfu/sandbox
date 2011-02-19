@@ -2005,6 +2005,7 @@ object frmMain: TfrmMain
       Align = alClient
       HideSelection = False
       Indent = 19
+      ReadOnly = True
       TabOrder = 0
       OnChange = TreeView1Change
       OnClick = TreeView1Click
