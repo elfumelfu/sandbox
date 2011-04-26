@@ -87,7 +87,7 @@ object frmClientiAp: TfrmClientiAp
     Height = 180
     Caption = 'Imbunatatiri'
     TabOrder = 1
-    object cblImbunatatiri: TCheckListBox
+    object cblImbunatatiri: TJvCheckListBox
       AlignWithMargins = True
       Left = 5
       Top = 18
@@ -112,7 +112,12 @@ object frmClientiAp: TfrmClientiAp
         'Boiler'
         'Contor gaz')
       ParentColor = True
+      ScrollWidth = 97
       TabOrder = 0
+      ExplicitLeft = 7
+      ExplicitTop = 20
+      ExplicitWidth = 97
+      ExplicitHeight = 186
     end
   end
   object GroupBox1: TGroupBox
@@ -228,7 +233,7 @@ object frmClientiAp: TfrmClientiAp
       Height = 21
       Style = csDropDownList
       DropDownCount = 20
-      ItemHeight = 0
+      ItemHeight = 13
       TabOrder = 0
       OnChange = txtJudetChange
     end
@@ -239,7 +244,7 @@ object frmClientiAp: TfrmClientiAp
       Height = 21
       Style = csDropDownList
       DropDownCount = 20
-      ItemHeight = 0
+      ItemHeight = 13
       TabOrder = 4
       OnChange = txtLocalitateChange
     end
@@ -355,7 +360,7 @@ object frmClientiAp: TfrmClientiAp
     Height = 90
     Caption = 'Mobilat'
     TabOrder = 3
-    object cblMobilat: TCheckListBox
+    object cblMobilat: TJvCheckListBox
       AlignWithMargins = True
       Left = 5
       Top = 18
@@ -365,14 +370,13 @@ object frmClientiAp: TfrmClientiAp
       BevelInner = bvNone
       BevelOuter = bvNone
       BorderStyle = bsNone
-      DoubleBuffered = False
       ItemHeight = 20
       Items.Strings = (
         'Mobilat'
         'Semimobilat'
         'Nemobilat')
       ParentColor = True
-      ParentDoubleBuffered = False
+      ScrollWidth = 74
       Style = lbOwnerDrawFixed
       TabOrder = 0
     end
@@ -384,7 +388,7 @@ object frmClientiAp: TfrmClientiAp
     Height = 90
     Caption = 'Utilat'
     TabOrder = 4
-    object cblUtilat: TCheckListBox
+    object cblUtilat: TJvCheckListBox
       AlignWithMargins = True
       Left = 5
       Top = 18
@@ -394,14 +398,13 @@ object frmClientiAp: TfrmClientiAp
       BevelInner = bvNone
       BevelOuter = bvNone
       BorderStyle = bsNone
-      DoubleBuffered = False
       ItemHeight = 20
       Items.Strings = (
         'Utilat'
         'Semiutilat'
         'Neutilat')
       ParentColor = True
-      ParentDoubleBuffered = False
+      ScrollWidth = 64
       Style = lbOwnerDrawFixed
       TabOrder = 0
     end

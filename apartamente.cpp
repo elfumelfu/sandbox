@@ -16,8 +16,6 @@
 
 TfrmAp *frmAp;
 
-UnicodeString poza1, poza2, poza3, poza4;
-UnicodeString imgPath = ExtractFileDir(Application->ExeName) + "\\poze\\";
 //---------------------------------------------------------------------------
 __fastcall TfrmAp::TfrmAp(TComponent* Owner)
 	: TForm(Owner)
@@ -25,10 +23,6 @@ __fastcall TfrmAp::TfrmAp(TComponent* Owner)
 operatie = "add";
 id = -1;
 inchiriat = 0;
-poza1=NULL;
-poza2=NULL;
-poza3=NULL;
-poza4=NULL;
 }
 //---------------------------------------------------------------------------
 void __fastcall TfrmAp::btnSalveazaClick(TObject *Sender)
@@ -98,62 +92,10 @@ if (operatie == "add")
 else
 	index = IntToStr(id);
 
- {
-	if (! DirectoryExists(imgPath))
-		CreateDir(imgPath);
-
-	if (poza1 != NULL)
-		{
-		poza1 = " LOAD_FILE ('" + poza1 + "') ";
-		/*
-		if (poza1 != imgPath+ ExtractFileName(poza1))
-			{
-			UnicodeString dest = imgPath+index + "_" + ExtractFileName(poza1);
-			CopyFileA(poza1.t_str(), dest.t_str(), false);
-			poza1 = index + "_" + ExtractFileName(poza1);
-			}
-		else
-			poza1 = ExtractFileName(poza1);*/
-		}
-
-	if (poza2 != NULL)
-		{
-
-		if (poza2 != imgPath+ ExtractFileName(poza2))
-			{
-			UnicodeString dest = imgPath+index + "_" + ExtractFileName(poza2);
-			CopyFileA(poza2.t_str(), dest.t_str(), false);
-			poza2 = index + "_" + ExtractFileName(poza2);
-			}
-		else
-			poza2 = ExtractFileName(poza2);
-		}
-
-	if (poza3 != NULL)
-		{
-		if (poza3 != imgPath+ ExtractFileName(poza3))
-			{
-			UnicodeString dest = imgPath+index + "_" + ExtractFileName(poza3);
-			CopyFileA(poza3.t_str(), dest.t_str(), false);
-			poza3 = index + "_" + ExtractFileName(poza3);
-			}
-		else
-			poza3 = ExtractFileName(poza3);
-		}
-
-	if (poza4 != NULL)
-		{
-		if (poza4 != imgPath+ ExtractFileName(poza4))
-			{
-			UnicodeString dest = imgPath+index + "_" + ExtractFileName(poza4);
-			CopyFileA(poza4.t_str(), dest.t_str(), false);
-			poza4 = index + "_" + ExtractFileName(poza4);
-			}
-		else
-			poza4 = ExtractFileName(poza4);
-		}
-
-}
+imgPoza1->Picture->Graphic->SaveToFile("c:\\p1.bmp");
+imgPoza2->Picture->Graphic->SaveToFile("c:\\p2.bmp");
+imgPoza3->Picture->Graphic->SaveToFile("c:\\p3.bmp");
+imgPoza4->Picture->Graphic->SaveToFile("c:\\p4.bmp");
 
 SQL->InsertSQL->Text = "INSERT INTO apartamente (judet, localitate, nrcam, zona, \
 		bloc, ap, etaj, pret, moneda, grupsanitar, dsc, data, data_modificarii, data_expirarii, \
@@ -193,10 +135,10 @@ SQL->InsertSQL->Text = "INSERT INTO apartamente (judet, localitate, nrcam, zona,
 		boiler + "," +
 		contorgaz + "," +
 		IntToStr(inchiriat) + ", " +
-		poza1+ ",'" +
-		poza2+ "','" +
-		poza3+ "','" +
-		poza4+ "')";
+		"LOAD_FILE('c:\\\\p1.bmp')"+ ", " +
+		"LOAD_FILE('c:\\\\p2.bmp')"+ "," +
+		"LOAD_FILE('c:\\\\p3.bmp')"+ "," +
+		"LOAD_FILE('c:\\\\p4.bmp')"+ ")";
 
 		//TODO update judet, localitate,
 SQL->ModifySQL->Text = "UPDATE apartamente SET  \
@@ -211,7 +153,7 @@ SQL->ModifySQL->Text = "UPDATE apartamente SET  \
 		"moneda = '" + txtMoneda->Text + "'," +
 		"grupsanitar = " + txtGs->Text + "," +
 		"dsc = '" + txtDsc->Text + "'," +
-		"data_modificarii = '" + tmp_mod + "',"+
+	   	"data_modificarii = '" + tmp_mod + "',"+
 		"data_expirarii = '" + tmp_exp + "',"+
 		"altele = '" + memAltele->Text + "'," +
 		"balcon = " + Balcon + "," +
@@ -232,12 +174,16 @@ SQL->ModifySQL->Text = "UPDATE apartamente SET  \
 		"telefon = '" + txtTel->Text + "'," +
 		"info_prop = '" + memInfo->Text + "', " +
 		"inchiriat = " + IntToStr(inchiriat) + ", " +
-		"poza1 = '" + poza1 + "', " +
-		"poza2 = '" + poza2 + "', " +
-		"poza3 = '" + poza3 + "', " +
-		"poza4 = '" + poza4 + "' " +
+		"poza1 = '" + "LOAD_FILE('c:\\\\p1.bmp')" + "', " +
+		"poza2 = '" + "LOAD_FILE('c:\\\\p2.bmp')" + "', " +
+		"poza3 = '" + "LOAD_FILE('c:\\\\p3.bmp')" + "', " +
+		"poza4 = '" + "LOAD_FILE('c:\\\\p4.bmp')" + "' " +
 		"WHERE id = " + IntToStr(frmAp->id);
 
+DeleteFileA("c:\\p1.bmp");
+DeleteFileA("c:\\p2.bmp");
+DeleteFileA("c:\\p3.bmp");
+DeleteFileA("c:\\p4.bmp");
 
 if (frmAp->operatie == "add")
 	SQL->InsertSQL->SaveToFile("myLog.txt" );
@@ -298,10 +244,6 @@ imgPoza1->Picture=imgFaraPoza->Picture;
 imgPoza2->Picture=imgFaraPoza->Picture;
 imgPoza3->Picture=imgFaraPoza->Picture;
 imgPoza4->Picture=imgFaraPoza->Picture;
-poza1=NULL;
-poza2=NULL;
-poza3=NULL;
-poza4=NULL;
 
 }
 //---------------------------------------------------------------------------
@@ -411,35 +353,17 @@ if (frmAp->operatie == "mod")
 	Label8->Visible=true;
 	Label8->Caption = frmMain->sqlSelect->FieldByName("data_modificarii")->AsString;
 
-	poza1=frmMain->sqlSelect->FieldByName("poza1")->AsString;
+    StoredProc1->Close();
+	StoredProc1->ParamByName("id_poza")->Value=frmMain->sqlSelect->FieldByName("id")->AsInteger;
+	StoredProc1->ParamByName("tabela")->Value="apartamente";
+	StoredProc1->ParamByName("camp")->Value="poza1";
+	StoredProc1->ParamByName("fisier")->Value="c:\\\\test_prg.jpg";
+	StoredProc1->ExecProc();
+	imgPoza1->Picture->LoadFromFile("c:\\test_prg.jpg");
+	/*poza1=frmMain->sqlSelect->FieldByName("poza1")->AsString;
 	poza2=frmMain->sqlSelect->FieldByName("poza2")->AsString;
 	poza3=frmMain->sqlSelect->FieldByName("poza3")->AsString;
-	poza4=frmMain->sqlSelect->FieldByName("poza4")->AsString;
-
-
-
-	if (poza1 != NULL && FileExists(imgPath+poza1)) {
-		imgPoza1->Picture->LoadFromFile(imgPath+poza1);
-		poza1 = imgPath+poza1;
-	}
-
-
-	if (poza2 != NULL && FileExists(imgPath+poza2) ) {
-		imgPoza2->Picture->LoadFromFile(imgPath+poza2);
-		poza2 = imgPath+poza2;
-	}
-
-
-	if (poza3 != NULL && FileExists(imgPath+poza3)) {
-		imgPoza3->Picture->LoadFromFile(imgPath+poza3);
-		poza3 = imgPath+poza3;
-	}
-
-
-	if (poza4 != NULL && FileExists(imgPath+poza4)) {
-		imgPoza4->Picture->LoadFromFile(imgPath+poza4);
-		poza4 = imgPath+poza4;
-	}
+	poza4=frmMain->sqlSelect->FieldByName("poza4")->AsString;*/
 
 	}
 }
@@ -468,38 +392,10 @@ void __fastcall TfrmAp::imgPoza1Click(TObject *Sender)
 {
 if (OpenPictureDialog1->Execute()) {
 	((TImage *)Sender)->Picture->LoadFromFile(OpenPictureDialog1->FileName);
-	poza1=OpenPictureDialog1->FileName;
 }
 }
 //---------------------------------------------------------------------------
 
-
-void __fastcall TfrmAp::imgPoza2Click(TObject *Sender)
-{
-if (OpenPictureDialog1->Execute()) {
-	((TImage *)Sender)->Picture->LoadFromFile(OpenPictureDialog1->FileName);
-	poza2=OpenPictureDialog1->FileName;
-}
-}
-//---------------------------------------------------------------------------
-
-void __fastcall TfrmAp::imgPoza3Click(TObject *Sender)
-{
-if (OpenPictureDialog1->Execute()) {
-	((TImage *)Sender)->Picture->LoadFromFile(OpenPictureDialog1->FileName);
-	poza3=OpenPictureDialog1->FileName;
-}
-}
-//---------------------------------------------------------------------------
-
-void __fastcall TfrmAp::imgPoza4Click(TObject *Sender)
-{
-if (OpenPictureDialog1->Execute()) {
-	((TImage *)Sender)->Picture->LoadFromFile(OpenPictureDialog1->FileName);
-	poza4=OpenPictureDialog1->FileName;
-}
-}
-//---------------------------------------------------------------------------
 
 void __fastcall TfrmAp::imgPoza1MouseUp(TObject *Sender, TMouseButton Button, TShiftState Shift,
           int X, int Y)

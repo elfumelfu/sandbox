@@ -162,6 +162,31 @@ __published: // IDE-managed Components
 	TQuery *qrySite;
 	TMenuItem *N3;
 	TMenuItem *Punepesite1;
+	TPanel *panCase;
+	TLabel *Label20;
+	TLabel *Label21;
+	TLabel *Label22;
+	TLabel *Label23;
+	TLabel *Label24;
+	TLabel *Label25;
+	TLabel *Label26;
+	TLabel *Label27;
+	TLabel *Label28;
+	TLabel *Label29;
+	TLabel *Label30;
+	TComboBox *cbCasaNrCam;
+	TComboBox *cbCasaZona;
+	TComboBox *ComboBox3;
+	TComboBox *ComboBox4;
+	TComboBox *ComboBox5;
+	TComboBox *ComboBox6;
+	TComboBox *ComboBox7;
+	TComboBox *ComboBox8;
+	TComboBox *ComboBox9;
+	TComboBox *ComboBox10;
+	TCheckBox *CheckBox1;
+	TCheckBox *CheckBox2;
+	TMenuItem *Spatii1;
 
 	void __fastcall DatabaseAfterConnect(TObject *Sender);
 	void __fastcall Iesier1Click(TObject *Sender);
@@ -218,6 +243,8 @@ __published: // IDE-managed Components
 	void __fastcall FormResize(TObject *Sender);
 	void __fastcall Case1Click(TObject *Sender);
 	void __fastcall Punepesite1Click(TObject *Sender);
+	void __fastcall Label30Click(TObject *Sender);
+	void __fastcall Spatii1Click(TObject *Sender);
 
 private: // User declarations
 public: // User declarations

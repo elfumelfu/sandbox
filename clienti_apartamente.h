@@ -12,6 +12,8 @@
 #include <DBTables.hpp>
 #include <DB.hpp>
 #include "ButtonWithColor.hpp"
+#include "JvCheckListBox.hpp"
+#include "JvExCheckLst.hpp"
 //---------------------------------------------------------------------------
 class TfrmClientiAp : public TForm
 {
@@ -22,7 +24,6 @@ __published:	// IDE-managed Components
 	TMemo *memInfo;
 	TLabeledEdit *txtTel;
 	TGroupBox *GroupBox2;
-	TCheckListBox *cblImbunatatiri;
 	TGroupBox *GroupBox1;
 	TLabel *Label4;
 	TLabel *Label5;
@@ -44,11 +45,9 @@ __published:	// IDE-managed Components
 	TLabel *Label2;
 	TLabel *Label6;
 	TGroupBox *GroupBox4;
-	TCheckListBox *cblMobilat;
 	TLabel *Label7;
 	TLabel *Label8;
 	TGroupBox *GroupBox5;
-	TCheckListBox *cblUtilat;
 	TButton *btnStergeTot;
 	TButton *btnSalveaza;
 	TButton *btnRenunta;
@@ -56,6 +55,9 @@ __published:	// IDE-managed Components
 	TUpdateSQL *SQL;
 	TQuery *getLocId;
 	TBitBtnWithColor *btnInchiriat;
+	TJvCheckListBox *cblMobilat;
+	TJvCheckListBox *cblUtilat;
+	TJvCheckListBox *cblImbunatatiri;
 	void __fastcall btnStergeTotClick(TObject *Sender);
 	void __fastcall FormShow(TObject *Sender);
 	void __fastcall txtJudetChange(TObject *Sender);

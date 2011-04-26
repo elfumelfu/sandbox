@@ -22,6 +22,7 @@
 #include "setari.h"
 #include "tools.h"
 #include "case.h"
+#include "spatii.h"
 
 #define NR_TABLES 4
 #define NR_CAMPURI_BOOL 13
@@ -441,6 +442,24 @@ void __fastcall TfrmMain::Query1AfterOpen(TDataSet *DataSet) {
 		cbNrCamChange(cbClApNrcam);
 
 	}
+
+	if (tabela == "casa" && update) {
+		// panClientiApartamente->Visible = true;
+		panCase->BringToFront();
+
+		ComboList(cbCasaNrCam, "nrcam", tabela, true, "");
+		ComboList(cbCasaZona, "zone.den", "zone,localitati,judete", true, " WHERE zone.localitate = localitati.id and localitati.judet=judete.id \
+				  and localitati.den='Galati' and judete.den='Galati' ");
+		//ComboList(cbClApDsc, "dsc", tabela, true, "");
+		//ComboList(cbClApPretMin, "pret_min", tabela, true, "");
+		//ComboList(cbClApPretMax, "pret_max", tabela, true, "");
+		//omboList(cbClApMoneda, "moneda", tabela, true, "");
+		//ComboList(cbClApNrpers, "nrpers", tabela, true, "");
+		//ComboList(cbClApPercontract, "per_contract", tabela, true, "");
+		cbNrCamChange(cbCasaNrCam);
+
+	}
+
 	if (tabela == "agentii") {
 		panCombo->Visible = false;
 	}
@@ -931,14 +950,19 @@ void __fastcall TfrmMain::Backup1Click(TObject *Sender) {
 	UnicodeString user = Database->Params->ValueFromIndex
 		[Database->Params->IndexOfName("USER NAME")];
 	UnicodeString path = ExtractFilePath(Application->ExeName) + "backup\\";
+	UnicodeString host = Database->Params->ValueFromIndex
+		[Database->Params->IndexOfName("HOST")];
 
 	if (!DirectoryExists(path)) {
 		CreateDir(path);
 	}
 	UnicodeString tmp;
+
 	DateTimeToString(tmp, "YYYY-MM-dd",Date());
-	cmd = "cmd /c \"mysqldump se_inchiriaza --host=85.121.123.134 -u" + user +
-		" -pchirie > \"" + path + "backup_db_" + tmp + "\"\"";
+	cmd = "cmd /c \"mysqldump se_inchiriaza --host=127.0.0.1 --user=" + user +
+		" --password="+ password + " > \"" + path + "backup_db_" + tmp + "\"\"";
+
+
 
 	WinExec(cmd.t_str(), SW_HIDE);
 
@@ -1377,6 +1401,19 @@ qrySite->DatabaseName=Database->DatabaseName;
 qrySite->SQL->Text="UPDATE apartamente SET onsite = 1 WHERE id =" +
 	selectedId;
 qrySite->ExecSQL();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TfrmMain::Label30Click(TObject *Sender)
+{
+frmCase->operatie = "add";
+frmCase->ShowModal();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TfrmMain::Spatii1Click(TObject *Sender)
+{
+frmSpatii->ShowModal();
 }
 //---------------------------------------------------------------------------
 

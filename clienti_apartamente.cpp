@@ -8,6 +8,8 @@
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma link "ButtonWithColor"
+#pragma link "JvCheckListBox"
+#pragma link "JvExCheckLst"
 #pragma resource "*.dfm"
 TfrmClientiAp *frmClientiAp;
 //---------------------------------------------------------------------------
@@ -35,9 +37,9 @@ txtMoneda->ItemIndex=-1;
 txtNrPersoane->Text= "";
 txtPerContract->Text= "";
 txtDsc->ItemIndex=-1;
-//cblImbunatatiri->CheckAll(cbUnchecked, False, False);
-//cblMobilat->CheckAll(cbUnchecked, False, False);
-//cblUtilat->CheckAll(cbUnchecked, False, False);
+cblImbunatatiri->UnCheckAll();
+cblMobilat->UnCheckAll();
+cblUtilat->UnCheckAll();
 txtNume->Text = "";
 txtTel->Text = "";
 memInfo->Text = "";

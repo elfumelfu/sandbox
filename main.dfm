@@ -1068,6 +1068,251 @@ object frmMain: TfrmMain
           OnClick = cbNrCamChange
         end
       end
+      object panCase: TPanel
+        Left = 0
+        Top = 0
+        Width = 655
+        Height = 56
+        Align = alClient
+        BevelOuter = bvNone
+        FullRepaint = False
+        ShowCaption = False
+        TabOrder = 2
+        DesignSize = (
+          655
+          56)
+        object Label20: TLabel
+          Left = 5
+          Top = 2
+          Width = 69
+          Height = 13
+          Caption = 'Numar camere'
+        end
+        object Label21: TLabel
+          Left = 81
+          Top = 2
+          Width = 24
+          Height = 13
+          Caption = 'Zona'
+        end
+        object Label22: TLabel
+          Left = 184
+          Top = 2
+          Width = 60
+          Height = 13
+          Caption = 'Decomandat'
+        end
+        object Label23: TLabel
+          Left = 528
+          Top = 2
+          Width = 38
+          Height = 13
+          Caption = 'Moneda'
+        end
+        object Label24: TLabel
+          Left = 400
+          Top = 2
+          Width = 49
+          Height = 13
+          Caption = 'Pret minim'
+        end
+        object Label25: TLabel
+          Left = 587
+          Top = 2
+          Width = 34
+          Height = 13
+          Caption = 'Mobilat'
+        end
+        object Label26: TLabel
+          Left = 670
+          Top = 2
+          Width = 25
+          Height = 13
+          Caption = 'Utilat'
+        end
+        object Label27: TLabel
+          Left = 464
+          Top = 2
+          Width = 53
+          Height = 13
+          Caption = 'Pret maxim'
+        end
+        object Label28: TLabel
+          Left = 274
+          Top = 2
+          Width = 59
+          Height = 13
+          Caption = 'Nr persoane'
+        end
+        object Label29: TLabel
+          Left = 337
+          Top = 2
+          Width = 42
+          Height = 13
+          Caption = 'Perioada'
+        end
+        object Label30: TLabel
+          Left = 588
+          Top = 40
+          Width = 62
+          Height = 13
+          Cursor = crHandPoint
+          Anchors = [akTop, akRight]
+          Caption = 'Adauga casa'
+          OnClick = Label30Click
+        end
+        object cbCasaNrCam: TComboBox
+          Left = 5
+          Top = 18
+          Width = 76
+          Height = 21
+          Style = csDropDownList
+          ItemHeight = 13
+          ItemIndex = 0
+          TabOrder = 0
+          Text = 'All'
+          OnChange = cbNrCamChange
+          Items.Strings = (
+            'All'
+            'Garsoniera'
+            '1'
+            '2'
+            '3'
+            '4'
+            '5')
+        end
+        object cbCasaZona: TComboBox
+          Left = 81
+          Top = 18
+          Width = 103
+          Height = 21
+          Style = csDropDownList
+          DropDownCount = 25
+          ItemHeight = 13
+          TabOrder = 1
+          OnChange = cbNrCamChange
+        end
+        object ComboBox3: TComboBox
+          Left = 184
+          Top = 18
+          Width = 90
+          Height = 21
+          Style = csDropDownList
+          ItemHeight = 13
+          TabOrder = 2
+          OnChange = cbNrCamChange
+        end
+        object ComboBox4: TComboBox
+          Left = 528
+          Top = 18
+          Width = 58
+          Height = 21
+          Style = csDropDownList
+          ItemHeight = 13
+          TabOrder = 3
+          OnChange = cbNrCamChange
+        end
+        object ComboBox5: TComboBox
+          Left = 400
+          Top = 18
+          Width = 63
+          Height = 21
+          Style = csDropDownList
+          DropDownCount = 25
+          ItemHeight = 13
+          TabOrder = 4
+          OnChange = cbNrCamChange
+        end
+        object ComboBox6: TComboBox
+          Left = 587
+          Top = 18
+          Width = 82
+          Height = 21
+          Style = csDropDownList
+          ItemHeight = 13
+          ItemIndex = 0
+          TabOrder = 5
+          Text = 'All'
+          OnChange = cbNrCamChange
+          Items.Strings = (
+            'All'
+            'Mobilat'
+            'Semimobilat'
+            'Nemobilat')
+        end
+        object ComboBox7: TComboBox
+          Left = 670
+          Top = 18
+          Width = 74
+          Height = 21
+          Style = csDropDownList
+          ItemHeight = 13
+          ItemIndex = 0
+          TabOrder = 6
+          Text = 'All'
+          OnChange = cbNrCamChange
+          Items.Strings = (
+            'All'
+            'Utilat'
+            'Semiutilat'
+            'Neutilat')
+        end
+        object ComboBox8: TComboBox
+          Left = 464
+          Top = 18
+          Width = 63
+          Height = 21
+          Style = csDropDownList
+          DropDownCount = 25
+          ItemHeight = 13
+          TabOrder = 7
+          OnChange = cbNrCamChange
+        end
+        object ComboBox9: TComboBox
+          Left = 274
+          Top = 18
+          Width = 63
+          Height = 21
+          Style = csDropDownList
+          DropDownCount = 25
+          ItemHeight = 13
+          TabOrder = 8
+          OnChange = cbNrCamChange
+        end
+        object ComboBox10: TComboBox
+          Left = 337
+          Top = 18
+          Width = 63
+          Height = 21
+          Style = csDropDownList
+          DropDownCount = 25
+          ItemHeight = 13
+          TabOrder = 9
+          OnChange = cbNrCamChange
+        end
+        object CheckBox1: TCheckBox
+          Left = 5
+          Top = 39
+          Width = 99
+          Height = 17
+          Caption = 'Include inchiriate'
+          Checked = True
+          State = cbChecked
+          TabOrder = 10
+          OnClick = cbNrCamChange
+        end
+        object CheckBox2: TCheckBox
+          Left = 108
+          Top = 39
+          Width = 100
+          Height = 17
+          Caption = 'Include inchiriate'
+          Checked = True
+          State = cbChecked
+          TabOrder = 11
+          OnClick = cbNrCamChange
+        end
+      end
     end
     object DBGridClienti: TDBGrid
       Left = 1
@@ -2223,6 +2468,10 @@ object frmMain: TfrmMain
       object Case1: TMenuItem
         Caption = '&Case'
         OnClick = Case1Click
+      end
+      object Spatii1: TMenuItem
+        Caption = 'Spatii'
+        OnClick = Spatii1Click
       end
     end
     object AdaugaClienti1: TMenuItem

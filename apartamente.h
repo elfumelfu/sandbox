@@ -73,6 +73,7 @@ __published:	// IDE-managed Components
 	TButton *btnZona;
 	TBitBtnWithColor *btnInchiriat;
 	TJvCheckListBox *CheckListBox1;
+	TStoredProc *StoredProc1;
 	void __fastcall btnSalveazaClick(TObject *Sender);
 	void __fastcall btnStergeTotClick(TObject *Sender);
 	void __fastcall btnRenuntaClick(TObject *Sender);
@@ -80,9 +81,6 @@ __published:	// IDE-managed Components
 	void __fastcall btnInchiriatClick(TObject *Sender);
 	void __fastcall txtGsKeyPress(TObject *Sender, wchar_t &Key);
 	void __fastcall imgPoza1Click(TObject *Sender);
-	void __fastcall imgPoza2Click(TObject *Sender);
-	void __fastcall imgPoza3Click(TObject *Sender);
-	void __fastcall imgPoza4Click(TObject *Sender);
 	void __fastcall imgPoza1MouseUp(TObject *Sender, TMouseButton Button, TShiftState Shift,
           int X, int Y);
 	void __fastcall txtJudetChange(TObject *Sender);
