@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2010/02/20 01:11:43.830.cpp,C:\Users\Elfu\Documents\Borland Studio Projects\Unit1.cpp=D:\Proiecte\se-inchirieaza.ro\main.cpp</Transaction>
+    <Transaction>2010/02/20 01:11:43.876.h,C:\Users\Elfu\Documents\Borland Studio Projects\Unit1.h=D:\Proiecte\se-inchirieaza.ro\main.h</Transaction>
+    <Transaction>2010/02/20 01:11:43.876.dfm,C:\Users\Elfu\Documents\Borland Studio Projects\Unit1.dfm=D:\Proiecte\se-inchirieaza.ro\main.dfm</Transaction>
+    <Transaction>2010/02/20 01:12:13.206.bdsproj,C:\Users\Elfu\Documents\Borland Studio Projects\Project1.bdsproj=D:\Proiecte\se-inchirieaza.ro\se_inchirieaza.bdsproj</Transaction>
+    <Transaction>2010/02/20 01:14:49.260.cpp,D:\Proiecte\se-inchirieaza.ro\Unit2.cpp=D:\Proiecte\se-inchirieaza.ro\login.cpp</Transaction>
+    <Transaction>2010/02/20 01:14:49.260.h,D:\Proiecte\se-inchirieaza.ro\Unit2.h=D:\Proiecte\se-inchirieaza.ro\login.h</Transaction>
+    <Transaction>2010/02/20 01:14:49.260.dfm,D:\Proiecte\se-inchirieaza.ro\Unit2.dfm=D:\Proiecte\se-inchirieaza.ro\login.dfm</Transaction>
+    <Transaction>2010/02/20 01:25:44.135.cpp,D:\Proiecte\se-inchirieaza.ro\login.cpp=</Transaction>
+    <Transaction>2010/02/20 01:25:44.135.dfm,D:\Proiecte\se-inchirieaza.ro\login.dfm=</Transaction>
+    <Transaction>2010/02/20 01:27:33.987.cpp,D:\Proiecte\se-inchirieaza.ro\Unit2.cpp=D:\Proiecte\se-inchirieaza.ro\login.cpp</Transaction>
+    <Transaction>2010/02/20 01:27:33.987.h,D:\Proiecte\se-inchirieaza.ro\Unit2.h=D:\Proiecte\se-inchirieaza.ro\login.h</Transaction>
+    <Transaction>2010/02/20 01:27:33.987.dfm,D:\Proiecte\se-inchirieaza.ro\Unit2.dfm=D:\Proiecte\se-inchirieaza.ro\login.dfm</Transaction>
+  </Transactions>
+</BorlandProject>
